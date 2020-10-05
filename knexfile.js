@@ -5,27 +5,15 @@ module.exports = {
   development: {
     client: 'pg',
     connection: {
-      database: 'petfood',
+      host : '127.0.0.1',
       user: "postgres",
-      password: "1234"
+      password: "1234",
+      database: 'petfood'
     },
+    
     migrations: {
       tableName: 'knex_migrations',
       directory: `${__dirname}/src/database/migrations`
     },
-  },
-
-    migrations: {
-      tableName: 'knex_migrations',
-      directory: `${__dirname}/src/database/migrations`
-    },
-
-  staging: {
-    client: 'postgresql',
-    connection: {
-      database: 'petfood',
-      user: "postgres",
-      password: "1234"
-    }
   }
 };
