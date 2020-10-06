@@ -18,7 +18,7 @@ module.exports = {
         
         
         try {
-            await knex('usuarios').insert({
+          const [id] = await knex('usuarios').insert({
                 nome,
                 email,
                 senha,
