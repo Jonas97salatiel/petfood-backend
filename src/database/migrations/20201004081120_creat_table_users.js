@@ -11,9 +11,6 @@ exports.up = function(knex) {
         table.timestamp('dataCadastro').defaultTo(knex.fn.now());
         table.timestamp('dataUpdate').defaultTo(knex.fn.now());
 
-        
-
-
     })
 };
 
