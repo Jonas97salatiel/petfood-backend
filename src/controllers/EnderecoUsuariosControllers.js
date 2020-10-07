@@ -17,8 +17,8 @@ module.exports = {
 
     async create(req, res, next){
         
-        const { cep, rua, numero, complemento, bairro, cidade, uf, pais} = req.body;
-        const user_id = req.headers.user_id;
+        const { cep, rua, numero, complemento, bairro, cidade, uf, pais,user_id} = req.body;
+        
         
 
         console.log(req.body);
@@ -36,7 +36,7 @@ module.exports = {
                 user_id: user_id
             });
 
-            return res.json();
+            return res.json()+console.log("Objeto cadastrado");
 
         } catch (error) {
             console.log(error);

@@ -18,14 +18,15 @@ module.exports = {
         
         
         try {
-          const [id] = await knex('usuarios').insert({
-                nome,
-                email,
-                senha,
-                telefone,
+           await knex('usuarios').insert({
+                nome:nome,
+                email:email,
+                senha:senha,
+                telefone:telefone,
             })
-            return res.json({id});
+            return res.json();
         } catch (error) {
+            console.log(error)
             next(error)
         } 
     }
