@@ -17,7 +17,6 @@ exports.up = function(knex) {
         //relacionamento
         table.integer('user_id')
             .references('usuarios.id')
-            .notNullable()
             .onDelete('CASCADE')
 
         table.timestamps(true, true);

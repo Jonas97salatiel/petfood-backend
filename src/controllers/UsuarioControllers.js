@@ -4,18 +4,26 @@ const knex = require('../database/index');
 module.exports = {
 
     async index(req, res){
-        const results = await knex('usuarios');
-        
 
-        return res.json(results);
+        try {
+
+            const results = await knex('usuarios');
+            return res.json(results);
+
+        } catch (error) {
+            console.log(error)
+        }
+
+       
     },
 
 
     async create(req, res, next){
+        const { nome, email, senha, telefone } = req.body;
         
-        const { nome, email, senha, telefone} = req.body;
+        
+
         console.log(req.body);
-        
         
         try {
            await knex('usuarios').insert({
@@ -29,7 +37,30 @@ module.exports = {
             console.log(error)
             next(error)
         } 
-    }
 
+    },
+
+    async alterUser(req, res, next){
+
+        try {
+            
+            const {id} = req.params;
+            console.log(id)
+            const { nome, email, senha, telefone} = req.body;
+            console.log(req.body)
+
+            await knex('usuarios').update({nome}).where({id});
+            await knex('usuarios').update({email}).where({id});
+            await knex('usuarios').update({senha}).where({id});
+            await knex('usuarios').update({telefone}).where({id});
+            
+            return res.status(200).json({ success: 'Cadastro atualizado com sucesso.'});
+            
+        } catch (error) {
+            console.log(error)
+            next(error)
+        }
+
+    }
 
 }
