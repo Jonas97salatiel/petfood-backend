@@ -1,3 +1,4 @@
+
 const knex = require('../database/index');
 
 
@@ -46,6 +47,8 @@ module.exports = {
         } 
     },
 
+    
+
     async alterEndereco(req, res, next){
 
         try {
@@ -75,7 +78,20 @@ module.exports = {
             next(error)
         }
 
+    },
+
+
+    async delete(req,res,next){
+                try{
+                    const {id_endereco}=req.params
+
+                    await knex('enderecos')
+                    .where({id_endereco})
+                    .del()
+
+                    return res.send()
+                }catch(error){
+                    next(error)
+                }
     }
-
-
 }

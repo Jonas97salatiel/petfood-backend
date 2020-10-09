@@ -16,6 +16,7 @@ routes.put('/usuarios/:id', UsuarioController.alterUser);
 routes.post('/enderecos', EnderecoUsuariosControllers.create);
 routes.get('/enderecos', EnderecoUsuariosControllers.index);
 routes.put('/enderecos/:id_endereco', EnderecoUsuariosControllers.alterEndereco);
+routes.delete('/enderecos/:id_endereco', EnderecoUsuariosControllers.delete)
 
 
 routes.post('/parceiro', ParceiroControllers.create);
@@ -23,7 +24,7 @@ routes.post('/parceiro', ParceiroControllers.create);
 
 routes.post('/formaPagamento',FormaPagamentoControllers.create);
 
-routes.post('/HistoricoMovimentacao', HistoricoMovimentacaoControllers.create);
+routes.post('/historicoMovimentacao', HistoricoMovimentacaoControllers.create);
 
 
 
