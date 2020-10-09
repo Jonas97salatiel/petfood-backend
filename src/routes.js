@@ -3,6 +3,7 @@ const express = require('express');
 const UsuarioController = require('./controllers/UsuarioControllers');
 const EnderecoUsuariosControllers = require('./controllers/EnderecoUsuariosControllers');
 const ParceiroControllers = require('./controllers/ParceiroControllers');
+const FormaPagamentoControllers = require('./controllers/FormaPagamentoControllers');
 
 const routes = express.Router();
 
@@ -17,6 +18,9 @@ routes.put('/enderecos/:id_endereco', EnderecoUsuariosControllers.alterEndereco)
 
 
 routes.post('/parceiro', ParceiroControllers.create);
+
+
+routes.post('/formaPagamento',FormaPagamentoControllers.create);
 
 
 
