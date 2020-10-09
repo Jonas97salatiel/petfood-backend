@@ -3,10 +3,10 @@ exports.up = function(knex) {
 
     return knex.schema.createTable('parceiro', function(table){
 
-        table.increments('idPareiro').primary();
+        table.increments('idParceiro').primary();
         table.string('razaoSocial', 50);
-        table.integer('cnpj', 50);
-        table.integer('inscricaoEstadual', 10);
+        table.integer('cnpj');
+        table.integer('inscricaoEstadual');
         table.string('telefone', 20);
    
 

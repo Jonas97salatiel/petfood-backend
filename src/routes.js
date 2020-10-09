@@ -2,7 +2,7 @@ const express = require('express');
 
 const UsuarioController = require('./controllers/UsuarioControllers');
 const EnderecoUsuariosControllers = require('./controllers/EnderecoUsuariosControllers');
-const ParceiroController = require('./controllers/ParceiroController');
+const ParceiroControllers = require('./controllers/ParceiroControllers');
 
 const routes = express.Router();
 
@@ -16,7 +16,7 @@ routes.get('/enderecos', EnderecoUsuariosControllers.index);
 routes.put('/enderecos/:id_endereco', EnderecoUsuariosControllers.alterEndereco);
 
 
-routes.post('/parceiro', ParceiroController.create);
+routes.post('/parceiro', ParceiroControllers.create);
 
 
 
