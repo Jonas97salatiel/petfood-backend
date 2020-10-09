@@ -12,6 +12,8 @@ const routes = express.Router();
 routes.get('/usuarios', UsuarioController.index);
 routes.post('/usuarios', UsuarioController.create);
 routes.put('/usuarios/:id', UsuarioController.alterUser);
+routes.delete('/usuarios/:id', UsuarioController.delete);
+
 
 routes.post('/enderecos', EnderecoUsuariosControllers.create);
 routes.get('/enderecos', EnderecoUsuariosControllers.index);
