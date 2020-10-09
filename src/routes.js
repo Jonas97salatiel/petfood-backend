@@ -4,6 +4,7 @@ const UsuarioController = require('./controllers/UsuarioControllers');
 const EnderecoUsuariosControllers = require('./controllers/EnderecoUsuariosControllers');
 const ParceiroControllers = require('./controllers/ParceiroControllers');
 const FormaPagamentoControllers = require('./controllers/FormaPagamentoControllers');
+const HistoricoMovimentacaoControllers = require('./controllers/HistoricoMovimentacaoControllers');
 
 const routes = express.Router();
 
@@ -21,6 +22,8 @@ routes.post('/parceiro', ParceiroControllers.create);
 
 
 routes.post('/formaPagamento',FormaPagamentoControllers.create);
+
+routes.post('/HistoricoMovimentacao', HistoricoMovimentacaoControllers.create);
 
 
 
