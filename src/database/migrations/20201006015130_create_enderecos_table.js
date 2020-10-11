@@ -3,7 +3,7 @@ exports.up = function(knex) {
   
     return knex.schema.createTable('enderecos', function(table){
 
-        table.increments('id_endereco').primary();
+        table.increments('idEndereco').primary();
         table.string('cep', 7);
         table.string('rua', 50);
         table.string('numero', 10);
@@ -15,7 +15,7 @@ exports.up = function(knex) {
 
 
         //relacionamento
-        table.integer('user_id')
+        table.integer('userId')
             .references('usuarios.id')
             .onDelete('CASCADE')
 

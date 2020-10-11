@@ -19,7 +19,7 @@ module.exports = {
     async create(req, res, next){
 
 
-        const user_id = req.headers.user_id;
+        const userId = req.headers.userId;
         const { cep, rua, numero, complemento, bairro, cidade, uf, pais } = req.body;
         
         
@@ -36,7 +36,7 @@ module.exports = {
                 cidade:cidade, 
                 uf:uf, 
                 pais:pais,
-                user_id:user_id
+                userId:userId
             })
 
             return res.json();
@@ -53,21 +53,21 @@ module.exports = {
 
         try {
             
-            const {id_endereco} = req.params;
-            console.log(id_endereco)
+            const {idEndereco} = req.params;
+            console.log(idEndereco)
             
-            const { cep, rua, numero, complemento,bairro,cidade,uf,pais,user_id} = req.body;
+            const { cep, rua, numero, complemento,bairro,cidade,uf,pais, userId} = req.body;
             console.log(req.body)
 
-            await knex('enderecos').update({cep}).where({id_endereco});
-            await knex('enderecos').update({rua}).where({id_endereco});
-            await knex('enderecos').update({numero}).where({id_endereco});
-            await knex('enderecos').update({complemento}).where({id_endereco});
-            await knex('enderecos').update({bairro}).where({id_endereco});
-            await knex('enderecos').update({cidade}).where({id_endereco});
-            await knex('enderecos').update({uf}).where({id_endereco});
-            await knex('enderecos').update({pais}).where({id_endereco});
-            await knex('enderecos').update({user_id}).where({id_endereco});
+            await knex('enderecos').update({cep}).where({idEndereco});
+            await knex('enderecos').update({rua}).where({idEndereco});
+            await knex('enderecos').update({numero}).where({idEndereco});
+            await knex('enderecos').update({complemento}).where({idEndereco});
+            await knex('enderecos').update({bairro}).where({idEndereco});
+            await knex('enderecos').update({cidade}).where({idEndereco});
+            await knex('enderecos').update({uf}).where({idEndereco});
+            await knex('enderecos').update({pais}).where({idEndereco});
+            await knex('enderecos').update({userId}).where({idEndereco});
 
 
             
@@ -83,10 +83,10 @@ module.exports = {
 
     async delete(req,res,next){
                 try{
-                    const {id_endereco}=req.params
+                    const {idEndereco}=req.params
 
                     await knex('enderecos')
-                    .where({id_endereco})
+                    .where({idEndereco})
                     .del()
 
                     return res.send()

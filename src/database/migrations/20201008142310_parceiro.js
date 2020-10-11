@@ -11,7 +11,7 @@ exports.up = function(knex) {
    
 
         //relacionamento
-        table.integer('user_id')
+        table.integer('userId')
             .references('usuarios.id')
             .notNullable()
             .onDelete('CASCADE')
