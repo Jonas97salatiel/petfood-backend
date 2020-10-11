@@ -1,6 +1,6 @@
 exports.up = function(knex) {
 
-    return knex.schema.createTable('pedidosPedidos', function(table){
+    return knex.schema.createTable('pedidosProdutos', function(table){
 
         table.increments('idPedidosPedidos').primary();
         table.integer('qtdProduto');
