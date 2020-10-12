@@ -7,17 +7,12 @@ const FormaPagamentoControllers = require('./controllers/FormaPagamentoControlle
 const HistoricoMovimentacaoControllers = require('./controllers/HistoricoMovimentacaoControllers');
 const ClienteControllers = require('./controllers/ClienteControllers');
 
-
-
-
 const routes = express.Router();
 
 routes.get('/usuarios', UsuarioController.index);
 routes.post('/usuarios', UsuarioController.create);
 routes.put('/usuarios/:id', UsuarioController.alterUser);
 routes.delete('/usuarios/:id', UsuarioController.delete);
-routes.get('/usuarios/login', UsuarioController.login);
-
 
 routes.post('/enderecos', EnderecoUsuariosControllers.create);
 routes.get('/enderecos', EnderecoUsuariosControllers.index);
