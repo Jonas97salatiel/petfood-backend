@@ -104,9 +104,9 @@ module.exports = {
             
             const { email, senha} = req.body;
 
-            let userEmail = await knex('usuarios').where('email', email);
+            let userEmail = await knex('usuarios').where('email', email).select('email');
             let crptSenha = await cryptography.criptografar(senha);
-            let userSenha = await knex('usuarios').where('senha', crptSenha);
+            let userSenha = await knex('usuarios').where('email', email).select('senha');
             console.log(crptSenha);
             console.log(userSenha);
 
