@@ -124,8 +124,4 @@ module.exports = {
         }
     }
 
-
-
-
-
 } //Fim os metodos desse objeto      
