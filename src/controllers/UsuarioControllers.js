@@ -1,5 +1,5 @@
 const knex = require('../database/index');
-
+const cryptography = require('./Cryptography');
 
 module.exports = {
 
@@ -11,36 +11,39 @@ module.exports = {
             return res.json(results);
 
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
-
-       
     },
 
 
     async create(req, res, next){
         const { nome, email, senha, telefone } = req.body;
-        
-        const userEmail = await knex('usuarios').count('email', email);
-        
-        console.log(userEmail[0].count);
+        console.log(req.body);
+        let userEmail = await knex('usuarios').where('email', email);
 
-        if( userEmail[0].count > 0 ){
+        console.log(userEmail.length);
+
+        if( userEmail.length === 1 ){
+
             return res.status(409).json({ warning: 'E-mail já está sendo utilizado!.'});
+            
         }else{
+          
             try {
-                await knex('usuarios').insert({
-                     nome:nome,
-                     email:email,
-                     senha:senha,
-                     telefone:telefone,
-                 })
-                 console.log(req.body);
-                 return res.status(200).json({ success: 'Usuario criado com sucesso!.'});
-             } catch (error) {
-                 console.log(error)
-                 next(error)
-             }
+                let crptSenha = await cryptography.criptografar(senha);
+                
+                 await knex('usuarios').insert({
+                      nome:nome,
+                      email:email,
+                      senha:crptSenha,
+                      telefone:telefone,
+                  })
+                  console.log(req.body);
+                  return res.status(200).json({ success: 'Usuario criado com sucesso!.'});
+              } catch (error) {
+                  console.log(error);
+                  next(error);
+              }
 
         }
         
@@ -53,8 +56,8 @@ module.exports = {
             })
             return res.status(200).json({ success: 'Usuario criado com sucesso!.'});
         } catch (error) {
-            console.log(error)
-            next(error)
+            console.log(error);
+            next(error);
         } 
 
     },
@@ -64,9 +67,9 @@ module.exports = {
         try {
             
             const {id} = req.params;
-            console.log(id)
+            console.log(id);
             const { nome, email, senha, telefone} = req.body;
-            console.log(req.body)
+            console.log(req.body);
 
             await knex('usuarios').update({nome}).where({id});
             await knex('usuarios').update({email}).where({id});
@@ -94,6 +97,35 @@ module.exports = {
         }catch(error){
             next(error)
         }
-}
+    },
 
-}
+    async login(req, res, next){
+        try {
+            
+            const { email, senha} = req.body;
+
+            let userEmail = await knex('usuarios').where('email', email);
+            let crptSenha = await cryptography.criptografar(senha);
+            let userSenha = await knex('usuarios').where('senha', crptSenha);
+            console.log(crptSenha);
+            console.log(userSenha);
+
+            if(userEmail.length === 1 & userSenha.length === 1 ){
+                
+                return res.status(200).json({ success: 'Login autenticado'});
+
+            }else{
+                return res.status(404).json({ success: 'E-mail ou senha estão incorretos'});
+            }
+
+        } catch (error) {
+            console.log(error)
+            next(error)
+        }
+    }
+
+
+
+
+
+} //Fim os metodos desse objeto      
