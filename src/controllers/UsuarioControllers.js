@@ -21,9 +21,28 @@ module.exports = {
     async create(req, res, next){
         const { nome, email, senha, telefone } = req.body;
         
+        const userEmail = await knex('usuarios').count('email', email);
         
+        console.log(userEmail[0].count);
 
-        console.log(req.body);
+        if( userEmail[0].count > 0 ){
+            return res.status(409).json({ warning: 'E-mail já está sendo utilizado!.'});
+        }else{
+            try {
+                await knex('usuarios').insert({
+                     nome:nome,
+                     email:email,
+                     senha:senha,
+                     telefone:telefone,
+                 })
+                 console.log(req.body);
+                 return res.status(200).json({ success: 'Usuario criado com sucesso!.'});
+             } catch (error) {
+                 console.log(error)
+                 next(error)
+             }
+
+        }
         
         try {
            await knex('usuarios').insert({
@@ -32,7 +51,7 @@ module.exports = {
                 senha:senha,
                 telefone:telefone,
             })
-            return res.json();
+            return res.status(200).json({ success: 'Usuario criado com sucesso!.'});
         } catch (error) {
             console.log(error)
             next(error)
