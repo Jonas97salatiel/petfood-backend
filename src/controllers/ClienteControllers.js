@@ -39,7 +39,7 @@ module.exports = {
                 cpf: cpf
             });
 
-            return res.json() + console.log("Objeto cadastrado");
+            return res.json(200) + console.log("Objeto cadastrado");
 
         } catch (error) {
             console.log(error);
