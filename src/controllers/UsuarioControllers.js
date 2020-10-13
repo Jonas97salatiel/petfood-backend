@@ -115,7 +115,7 @@ module.exports = {
                 return res.status(200).json({ success: 'Login autenticado'});
 
             }else{
-                return res.status(404).json({ success: 'E-mail ou senha estão incorretos'});
+                return res.status(404).json({ warning: 'E-mail ou senha estão incorretos'});
             }
 
         } catch (error) {
