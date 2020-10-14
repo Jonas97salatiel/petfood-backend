@@ -1,6 +1,6 @@
 exports.up = function(knex) {
 
-    return knex.schema.createTable('formaPagamentos', function(table){
+    return knex.schema.createTable('forma_pagamentos', function(table){
 
         table.increments('idFormaPagamento').primary();
         table.string('formaPagamento', 100);

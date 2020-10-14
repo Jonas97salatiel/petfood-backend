@@ -6,7 +6,7 @@ module.exports = {
     async index(req, res) {
 
         try {
-            const results = await knex('formaPagamento');
+            const results = await knex('forma_pagamentos');
             return res.json(results);
         } catch (error) {
             next(error);
@@ -17,19 +17,21 @@ module.exports = {
 
     async create(req, res, next) {
         const { formaPagamento, descricao, parcelas} = req.body;
+        
         console.log(req.body);
 
-        let consultFPgmt = knex('formaPagamento').where(descricao);
+        const consultFPgmt = await knex('forma_pagamentos').where({descricao, parcelas});
 
+        console.log(consultFPgmt.length);
 
-        if (consultFPgmt[0].formaPagamento === formaPagamento && consultFPgmt[0].parcelas === parcelas ) {
+        if ( consultFPgmt.length > 0) {
 
-            return res.status(409).json({ warning: 'E-mail já está sendo utilizado!.'});
+            return res.status(409).json({ warning: 'Forma de pagamento já cadastrada!'});
             
         }else{
             try {
             
-                await knex('formaPagamento').insert({
+                await knex('forma_pagamentos').insert({
                     formaPagamento: formaPagamento,
                     descricao: descricao,
                     parcelas: parcelas
@@ -56,9 +58,9 @@ module.exports = {
             const { formaPgto, descricao, parcelas} = req.body;
             console.log(req.body)
 
-            await knex('formaPagamento').update({ formaPgto }).where({ idFormaPgto });
-            await knex('formaPagamento').update({ descricao }).where({ idFormaPgto });
-            await knex('formaPagamento').update({ parcelas }).where({ idFormaPgto });
+            await knex('forma_pagamentos').update({ formaPgto }).where({ idFormaPgto });
+            await knex('forma_pagamentos').update({ descricao }).where({ idFormaPgto });
+            await knex('forma_pagamentos').update({ parcelas }).where({ idFormaPgto });
 
             return res.status(200).json({ success: 'Cadastro atualizado com sucesso.' });
 
@@ -72,7 +74,7 @@ module.exports = {
         try{
             const {idFormaPgto}=req.params
 
-            await knex('formaPagamento')
+            await knex('forma_pagamentos')
             .where({idFormaPgto})
             .del()
 
@@ -81,6 +83,4 @@ module.exports = {
             next(error)
         }
     }
-
-
 }
