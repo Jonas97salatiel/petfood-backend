@@ -1,6 +1,6 @@
 exports.up = function(knex) {
 
-    return knex.schema.createTable('catoes', function(table){
+    return knex.schema.createTable('cartoes', function(table){
 
         table.increments('idcartoes').primary();
         table.string('bandeira');
@@ -22,6 +22,6 @@ exports.up = function(knex) {
 
 exports.down = function(knex) {
 
-    return knex.schema.dropTable('catoes');
+    return knex.schema.dropTable('cartoes');
 
 };

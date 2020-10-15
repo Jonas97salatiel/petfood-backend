@@ -1,6 +1,6 @@
 exports.up = function(knex) {
   
-    return knex.schema.createTable('tipoMovimentacao', function(table){
+    return knex.schema.createTable('tipo_movimentacao', function(table){
 
         table.increments('idTipoMovimentacao').primary();
         table.string('descTipoMovimentacao', 100);
@@ -13,5 +13,5 @@ exports.up = function(knex) {
 };
 
 exports.down = function(knex) {
-    return knex.schema.dropTable('tipoMovimentacao');
+    return knex.schema.dropTable('tipo_movimentacao');
 };

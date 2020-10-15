@@ -1,6 +1,6 @@
 exports.up = function(knex) {
 
-    return knex.schema.createTable('cuponsDesconto', function(table){
+    return knex.schema.createTable('cupons_desconto', function(table){
 
         table.increments('idCuponsDesconto').primary();
         table.string('descCupom');
@@ -18,6 +18,6 @@ exports.up = function(knex) {
 
 exports.down = function(knex) {
 
-    return knex.schema.dropTable('pedidos');
+    return knex.schema.dropTable('cupons_desconto');
 
 };

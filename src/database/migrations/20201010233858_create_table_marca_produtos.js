@@ -1,6 +1,6 @@
 exports.up = function(knex) {
   
-    return knex.schema.createTable('marcaDosProdutos', function(table){
+    return knex.schema.createTable('marca_produtos', function(table){
 
         table.increments('idmarcaDosProdutos').primary();
 

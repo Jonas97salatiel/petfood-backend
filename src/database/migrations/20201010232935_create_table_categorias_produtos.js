@@ -1,6 +1,6 @@
 exports.up = function(knex) {
   
-    return knex.schema.createTable('categoriasDosProdutos', function(table){
+    return knex.schema.createTable('categorias_produtos', function(table){
 
         table.increments('idCategoriasDosProdutos').primary();
 
@@ -22,5 +22,5 @@ exports.up = function(knex) {
 };
 
 exports.down = function(knex) {
-    return knex.schema.dropTable('categorias');
+    return knex.schema.dropTable('categorias_produtos');
 };

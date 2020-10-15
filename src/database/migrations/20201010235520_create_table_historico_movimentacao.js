@@ -1,6 +1,6 @@
 exports.up = function(knex) {
   
-    return knex.schema.createTable('historicoMovimentacao', function(table){
+    return knex.schema.createTable('historico_movimentacao', function(table){
 
         table.increments('idHistoricoMovimentacao').primary();
         table.string('descTipoMovimentacao', 100);
@@ -24,5 +24,5 @@ exports.up = function(knex) {
 };
 
 exports.down = function(knex) {
-    return knex.schema.dropTable('historicoMovimentacao');
+    return knex.schema.dropTable('historico_movimentacao');
 };

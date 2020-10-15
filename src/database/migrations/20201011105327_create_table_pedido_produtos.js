@@ -1,8 +1,8 @@
 exports.up = function(knex) {
 
-    return knex.schema.createTable('pedidosProdutos', function(table){
+    return knex.schema.createTable('pedidos_produtos', function(table){
 
-        table.increments('idPedidosPedidos').primary();
+        table.increments('idPedidosProdutos').primary();
         table.integer('qtdProduto');
         table.float('valorProduto');
 
@@ -24,6 +24,6 @@ exports.up = function(knex) {
 
 exports.down = function(knex) {
 
-    return knex.schema.dropTable('pedidos');
+    return knex.schema.dropTable('pedidos_produtos');
 
 };
