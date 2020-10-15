@@ -52,15 +52,14 @@ module.exports = {
 
         try {
 
-            const { idFormaPgto } = req.params;
-            console.log(idFormaPgto)
-
-            const { formaPgto, descricao, parcelas} = req.body;
+            const {idFormaPagamento} = req.params;
+            console.log(idFormaPagamento)
+            const { formaPagamento, descricao, parcelas} = req.body;
             console.log(req.body)
 
-            await knex('forma_pagamentos').update({ formaPgto }).where({ idFormaPgto });
-            await knex('forma_pagamentos').update({ descricao }).where({ idFormaPgto });
-            await knex('forma_pagamentos').update({ parcelas }).where({ idFormaPgto });
+            await knex('forma_pagamentos')
+                .update({ formaPagamento,  descricao, parcelas})
+                .where({ idFormaPagamento });
 
             return res.status(200).json({ success: 'Cadastro atualizado com sucesso.' });
 
@@ -72,7 +71,7 @@ module.exports = {
 
     async delete(req,res,next){
         try{
-            const {idFormaPgto}=req.params
+            const {idFormaPagamento}=req.params
 
             await knex('forma_pagamentos')
             .where({idFormaPgto})

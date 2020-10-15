@@ -29,7 +29,7 @@ routes.get('/clientes', ClienteControllers.indexCliente);
 
 routes.post('/formaPagamento',FormaPagamentoControllers.create);
 routes.get('/formaPagamento',FormaPagamentoControllers.index);
-routes.put('/formaPagamento',FormaPagamentoControllers.alter);
+routes.put('/formaPagamento/:idFormaPagamento',FormaPagamentoControllers.alter);
 routes.delete('/formaPagamento',FormaPagamentoControllers.delete);
 
 

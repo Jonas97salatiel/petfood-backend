@@ -16,6 +16,6 @@ exports.up = function(knex) {
  
 exports.down = function(knex) {
 
-    return knex.schema.dropTable('formaPagamentos');
+    return knex.schema.dropTable('forma_pagamentos');
 
 };
