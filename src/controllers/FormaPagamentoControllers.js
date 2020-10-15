@@ -74,7 +74,7 @@ module.exports = {
             const {idFormaPagamento}=req.params
 
             await knex('forma_pagamentos')
-            .where({idFormaPgto})
+            .where({idFormaPagamento})
             .del()
 
             return res.send()
