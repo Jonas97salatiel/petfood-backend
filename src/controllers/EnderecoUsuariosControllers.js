@@ -1,7 +1,6 @@
 
 const knex = require('../database/index');
 
-
 module.exports = {
 
     async index(req, res){
@@ -15,15 +14,11 @@ module.exports = {
 
     },
 
-
     async create(req, res, next){
-
 
         const userId = req.headers.userId;
         const { cep, rua, numero, complemento, bairro, cidade, uf, pais } = req.body;
         
-        
-
         console.log(req.body);
         
         try {
@@ -46,8 +41,6 @@ module.exports = {
             next(error);
         } 
     },
-
-    
 
     async alterEndereco(req, res, next){
 
@@ -79,7 +72,6 @@ module.exports = {
         }
 
     },
-
 
     async delete(req,res,next){
                 try{
