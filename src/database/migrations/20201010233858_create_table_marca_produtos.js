@@ -22,5 +22,5 @@ exports.up = function(knex) {
 };
 
 exports.down = function(knex) {
-    return knex.schema.dropTable('marcaDosProdutos');
+    return knex.schema.dropTable('marca_produtos');
 };

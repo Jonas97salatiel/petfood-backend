@@ -6,7 +6,7 @@ module.exports = {
     async index(req, res){
 
         try {
-            const results = await knex('historicoMovimentacao');
+            const results = await knex('historico_movimentacao');
             return res.json(results);            
         } catch (error) {
             console.log(error)
@@ -26,7 +26,7 @@ module.exports = {
         console.log(req.body);
         
         try {
-           await knex('historicoMovimentacao').insert({
+           await knex('historico_movimentacao').insert({
             descTipoMovimentacao:descTipoMovimentacao, 
             dataMovimentacao:dataMovimentacao, 
             tipoMovimentacao:tipoMovimentacao, 
