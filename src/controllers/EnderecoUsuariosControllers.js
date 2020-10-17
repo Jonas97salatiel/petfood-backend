@@ -19,32 +19,33 @@ module.exports = {
     async create(req, res, next){
 
 
-        const userId = req.headers.userId;
+        const {userId} = req.params;
+
+        console.log(userId);
+
         const { cep, rua, numero, complemento, bairro, cidade, uf, pais } = req.body;
         
-        
-
         console.log(req.body);
         
-        try {
-           await knex('enderecos').insert({
-                cep:cep, 
-                rua:rua, 
-                numero:numero, 
-                complemento:complemento, 
-                bairro:bairro, 
-                cidade:cidade, 
-                uf:uf, 
-                pais:pais,
-                userId:userId
-            })
+    //   try {
+         //  await knex('enderecos').insert({
+        //        cep:cep, 
+         //       rua:rua, 
+        //        numero:numero, 
+        //        complemento:complemento, 
+        //        bairro:bairro, 
+         //       cidade:cidade, 
+        //        uf:uf, 
+        //        pais:pais,
+        //        userId:userId
+       //     })
 
-            return res.json();
+      //      return res.json();
 
-        } catch (error) {
-            console.log(error);
-            next(error);
-        } 
+     //   } catch (error) {
+       //     console.log(error);
+        //    next(error);
+       // } 
     },
 
     

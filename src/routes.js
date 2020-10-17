@@ -17,12 +17,16 @@ routes.post('/usuarios', UsuarioController.create);
 routes.put('/usuarios/:id', UsuarioController.alterUser);
 routes.delete('/usuarios/:id', UsuarioController.delete);
 
-routes.post('/enderecos', EnderecoUsuariosControllers.create);
+routes.post('/enderecos/:userId', EnderecoUsuariosControllers.create);
 routes.get('/enderecos', EnderecoUsuariosControllers.index);
 routes.put('/enderecos/:id_endereco', EnderecoUsuariosControllers.alterEndereco);
 routes.delete('/enderecos/:id_endereco', EnderecoUsuariosControllers.delete)
 
 routes.post('/parceiro', ParceiroControllers.create );
+routes.get('/parceiro', ParceiroControllers.index );
+routes.put('/parceiro/:idParceiro', ParceiroControllers.alterParceiro);
+routes.put('/parceiro/:idParceiro', ParceiroControllers.delete);
+
 
 routes.post('/clientes', ClienteControllers.create);
 routes.put('/clientes', ClienteControllers.alterCliente);

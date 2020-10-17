@@ -25,9 +25,7 @@ module.exports = {
         
         console.log(userEmail[0].count);
 
-        if( userEmail[0].count > 0 ){
-            return res.status(409).json({ warning: 'E-mail já está sendo utilizado!.'});
-        }else{
+       
             try {
                 await knex('usuarios').insert({
                      nome:nome,
@@ -42,7 +40,7 @@ module.exports = {
                  next(error)
              }
 
-        }
+        
         
         try {
            await knex('usuarios').insert({
