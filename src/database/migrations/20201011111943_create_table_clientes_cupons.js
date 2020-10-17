@@ -5,7 +5,7 @@ exports.up = function(knex) {
         table.increments('idClientesCupons').primary();
 
         table.integer('idCuponsDesconto')
-            .references('cuponsDesconto.idCuponsDesconto')
+            .references('cupons_desconto.idCuponsDesconto')
             .notNullable()
             .onDelete('CASCADE')
 

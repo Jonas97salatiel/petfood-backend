@@ -13,7 +13,7 @@ exports.up = function(knex) {
             .onDelete('CASCADE')
 
         table.integer('idFormaPagamento')
-            .references('formaPagamentos.idFormaPagamento')
+            .references('forma_pagamentos.idFormaPagamento')
             .notNullable()
             .onDelete('CASCADE')
 

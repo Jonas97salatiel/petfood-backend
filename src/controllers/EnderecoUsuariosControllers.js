@@ -39,7 +39,7 @@ module.exports = {
                 userId:userId
             })
 
-            return res.json();
+            return res.status(200).json({ success: 'Endereço criado com sucesso.'});
 
         } catch (error) {
             console.log(error);
