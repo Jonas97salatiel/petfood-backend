@@ -3,9 +3,9 @@ exports.up = function(knex) {
     return knex.schema.createTable('pedidos', function(table){
 
         table.increments('idPedidos').primary();
-        table.integer('qtdParcelas');
         table.string('nomeCliente', 100);
         table.float('valorPedido');
+        table.string('status', 20);
 
         table.integer('idCliente')
             .references('clientes.idCliente')
