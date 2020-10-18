@@ -62,8 +62,6 @@ module.exports = {
             await knex('enderecos').update({pais}).where({idEndereco});
             await knex('enderecos').update({userId}).where({idEndereco});
 
-
-            
             return res.status(200).json({ success: 'Cadastro atualizado com sucesso.'});
             
         } catch (error) {

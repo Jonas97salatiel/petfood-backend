@@ -1,5 +1,10 @@
 const knex = require('../database/index');
+
 const cryptography = require('./Cryptography');
+
+const jwt = require('jsonwebtoken');
+
+require("dotenv-safe").config();
 
 module.exports = {
 
@@ -32,14 +37,22 @@ module.exports = {
             try {
                 let crptSenha = await cryptography.criptografar(senha);
                 
-                 await knex('usuarios').insert({
+                let {id} = await knex('usuarios').insert({
                       nome:nome,
                       email:email,
                       senha:crptSenha,
                       telefone:telefone,
-                  })
+                  });
+
+                  let token = jwt.sign({ id }, process.env.SECRET, {
+                    expiresIn: 1500
+
+                });
+
                   console.log(req.body);
-                  return res.status(200).json({ success: 'Usuario criado com sucesso!.'});
+                  return res.status(200).json({ success: 'Usuario criado com sucesso!.', 
+                                                auth: true, 
+                                                token: token});
               } catch (error) {
                   console.log(error);
                   next(error);
@@ -107,12 +120,25 @@ module.exports = {
             let userEmail = await knex('usuarios').where('email', email).select('email');
             let crptSenha = await cryptography.criptografar(senha);
             let userSenha = await knex('usuarios').where('email', email).select('senha');
+
             console.log(crptSenha);
             console.log(userSenha);
 
             if(userEmail.length === 1 & userSenha.length === 1 ){
                 
-                return res.status(200).json({ success: 'Login autenticado'});
+                let id = await knex('usuarios').where('email', email).select('id');
+
+                let token = jwt.sign({ id }, process.env.SECRET, {
+                    expiresIn: 1500
+
+                });
+
+                return res.status(200).json({ 
+                    success: 'Login autenticado', 
+                    auth: true, 
+                    token: token
+                });
+
 
             }else{
                 return res.status(404).json({ warning: 'E-mail ou senha estão incorretos'});
@@ -122,6 +148,10 @@ module.exports = {
             console.log(error)
             next(error)
         }
-    }
+    },
 
+    async logout(req, res, next){
+
+    res.json({auth: false, token: null})
+    }
 } //Fim os metodos desse objeto      
