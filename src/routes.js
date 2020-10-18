@@ -15,7 +15,7 @@ routes.get('/usuarios', UsuarioController.index);
 routes.post('/usuarios', UsuarioController.create);
 routes.put('/usuarios/:id', authMiddleware,UsuarioController.alterUser);
 routes.delete('/usuarios/:id', UsuarioController.delete);
-routes.post('/usuarios/login' ,UsuarioController.login);
+routes.get('/usuarios/login' ,UsuarioController.login);
 routes.post('/usuarios/logout', UsuarioController.logout);
 
 routes.post('/enderecos', EnderecoUsuariosControllers.create);
