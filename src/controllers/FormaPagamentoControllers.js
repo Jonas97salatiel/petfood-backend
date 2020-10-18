@@ -59,7 +59,7 @@ module.exports = {
 
             await knex('forma_pagamentos')
                 .update({ formaPagamento,  descricao, parcelas})
-                .where({ idFormaPagamento });
+                .where({ idFormaPagamento }); 
 
             return res.status(200).json({ success: 'Cadastro atualizado com sucesso.' });
 
