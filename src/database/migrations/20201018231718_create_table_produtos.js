@@ -8,14 +8,22 @@ exports.up = function(knex) {
         table.float('qtdEstoque');
         table.string('medida', 2);
         table.float('peso');
-        table.string('status');
         
 
         //relacionamento
+        table.integer('idStatus')
+            .references('status_produtos.idStatus')
+            .notNullable()
+            .onDelete('CASCADE')
+
+
         table.integer('idParceiro')
             .references('parceiro.idParceiro')
             .notNullable()
             .onDelete('CASCADE')
+        
+
+        
 
         table.timestamps(true, true);
     })
