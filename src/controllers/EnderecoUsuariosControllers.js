@@ -19,11 +19,12 @@ module.exports = {
     async create(req, res, next){
 
 
-        const userId = req.headers.userId;
-        const { cep, rua, numero, complemento, bairro, cidade, uf, pais } = req.body;
-        
-        
+       // const userId = req.headers.userId;
 
+        const { cep, rua, numero, complemento, bairro, cidade, uf, pais,userId } = req.body;
+        
+        
+        console.log(userId);
         console.log(req.body);
         
         try {
@@ -39,7 +40,7 @@ module.exports = {
                 userId:userId
             })
 
-            return res.json();
+            return res.status(200).json({ success: 'Endereço criado com sucesso!.'});
 
         } catch (error) {
             console.log(error);

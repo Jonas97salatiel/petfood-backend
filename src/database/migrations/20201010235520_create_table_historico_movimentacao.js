@@ -15,7 +15,7 @@ exports.up = function(knex) {
             .onDelete('CASCADE')
 
         table.integer('idTipoMovimentacao')
-            .references('tipoMovimentacao.idTipoMovimentacao')
+            .references('tipo_movimentacao.idTipoMovimentacao')
             .notNullable()
             .onDelete('CASCADE')
 

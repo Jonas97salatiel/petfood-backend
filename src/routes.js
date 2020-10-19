@@ -22,6 +22,10 @@ routes.put('/enderecos/:id_endereco', EnderecoUsuariosControllers.alterEndereco)
 routes.delete('/enderecos/:id_endereco', EnderecoUsuariosControllers.delete);
 
 routes.post('/parceiro', ParceiroControllers.create );
+routes.get('/parceiro',ParceiroControllers.index);
+routes.put('/parceiro/:idParceiro',ParceiroControllers.alterParceiro);
+routes.delete('/parceiro/:idParceiro',ParceiroControllers.delete);
+
 
 routes.post('/clientes', ClienteControllers.create);
 routes.put('/clientes', ClienteControllers.alterCliente);

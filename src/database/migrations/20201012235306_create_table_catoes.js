@@ -10,7 +10,7 @@ exports.up = function(knex) {
         table.date('validade');
 
         table.integer('idFormaPagamento')
-            .references('formaPagamentos.idFormaPagamento')
+            .references('forma_pagamentos.idFormaPagamento')
             .notNullable()
             .onDelete('CASCADE')
 
