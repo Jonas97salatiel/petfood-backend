@@ -6,6 +6,8 @@ const ParceiroControllers = require('./controllers/ParceiroControllers');
 const FormaPagamentoControllers = require('./controllers/FormaPagamentoControllers');
 const HistoricoMovimentacaoControllers = require('./controllers/HistoricoMovimentacaoControllers');
 const ClienteControllers = require('./controllers/ClienteControllers');
+const ProdutoControllers = require('./controllers/ProdutoController');
+
 
 const routes = express.Router();
 
@@ -25,6 +27,11 @@ routes.post('/parceiro', ParceiroControllers.create );
 routes.get('/parceiro',ParceiroControllers.index);
 routes.put('/parceiro/:idParceiro',ParceiroControllers.alterParceiro);
 routes.delete('/parceiro/:idParceiro',ParceiroControllers.delete);
+
+routes.post('/produto', ProdutoControllers.create );
+routes.get('/produto',ProdutoControllers.index);
+routes.put('/produto/:idProduto',ProdutoControllers.alterProduto);
+routes.delete('/produto/:idProduto',ProdutoControllers.delete);
 
 
 routes.post('/clientes', ClienteControllers.create);
