@@ -6,6 +6,8 @@ const ParceiroControllers = require('./controllers/ParceiroControllers');
 const FormaPagamentoControllers = require('./controllers/FormaPagamentoControllers');
 const HistoricoMovimentacaoControllers = require('./controllers/HistoricoMovimentacaoControllers');
 const ClienteControllers = require('./controllers/ClienteControllers');
+const MarcaControllers = require('./controllers/MarcaControllers');
+
 
 
 
@@ -31,6 +33,14 @@ routes.put('/parceiro/:idParceiro', ParceiroControllers.delete);
 routes.post('/clientes', ClienteControllers.create);
 routes.put('/clientes', ClienteControllers.alterCliente);
 routes.get('/clientes', ClienteControllers.indexCliente);
+
+
+routes.post('/marca', MarcaControllers.create);
+routes.put('/marca/:idMarca', MarcaControllers.alterMarca);
+routes.get('/marca', MarcaControllers.index);
+routes.delete('/marca/:idMarca', MarcaControllers.delete);
+
+
 
 routes.post('/formaPagamento',FormaPagamentoControllers.create);
 
