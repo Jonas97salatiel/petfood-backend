@@ -9,6 +9,8 @@ const ClienteControllers = require('./controllers/ClienteControllers');
 const MarcaControllers = require('./controllers/MarcaControllers');
 const CategoriaControllers = require('./controllers/CategoriaControllers');
 const CuponsControllers = require('./controllers/CuponsControllers');
+const TipoMovimentacaoControllers = require('./controllers/TipoMovimentacaoControllers');
+
 
 
 
@@ -54,6 +56,11 @@ routes.post('/cupons', CuponsControllers.create);
 routes.put('/cupons/:idCuponsDesconto', CuponsControllers.alterCupons);
 routes.get('/cupons', CuponsControllers.index);
 routes.delete('/cupons/:idCuponsDesconto', CuponsControllers.delete);
+
+routes.post('/TipoMovimentacao', TipoMovimentacaoControllers.create);
+routes.put('/TipoMovimentacao/:idTipoMovimentacao', TipoMovimentacaoControllers.alterMovimentacao);
+routes.get('/TipoMovimentacao', TipoMovimentacaoControllers.index);
+routes.delete('/TipoMovimentacao/:idTipoMovimentacao', TipoMovimentacaoControllers.delete);
 
 
 routes.post('/formaPagamento',FormaPagamentoControllers.create);
