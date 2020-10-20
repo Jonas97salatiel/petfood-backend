@@ -1,7 +1,6 @@
 
 const knex = require('../database/index');
 
-
 module.exports = {
 
     async index(req, res){
@@ -15,40 +14,37 @@ module.exports = {
 
     },
 
-
     async create(req, res, next){
 
 
-        const {userId} = req.params;
+       // const userId = req.headers.userId;
 
-        console.log(userId);
-
-        const { cep, rua, numero, complemento, bairro, cidade, uf, pais } = req.body;
+        const { cep, rua, numero, complemento, bairro, cidade, uf, pais,userId } = req.body;
         
+        
+        console.log(userId);
         console.log(req.body);
         
-    //   try {
-         //  await knex('enderecos').insert({
-        //        cep:cep, 
-         //       rua:rua, 
-        //        numero:numero, 
-        //        complemento:complemento, 
-        //        bairro:bairro, 
-         //       cidade:cidade, 
-        //        uf:uf, 
-        //        pais:pais,
-        //        userId:userId
-       //     })
+        try {
+           await knex('enderecos').insert({
+                cep:cep, 
+                rua:rua, 
+                numero:numero, 
+                complemento:complemento, 
+                bairro:bairro, 
+                cidade:cidade, 
+                uf:uf, 
+                pais:pais,
+                userId:userId
+            })
 
-      //      return res.json();
+            return res.status(200).json({ success: 'Endereço criado com sucesso.'});
 
-     //   } catch (error) {
-       //     console.log(error);
-        //    next(error);
-       // } 
+        } catch (error) {
+            console.log(error);
+            next(error);
+        } 
     },
-
-    
 
     async alterEndereco(req, res, next){
 
@@ -70,8 +66,6 @@ module.exports = {
             await knex('enderecos').update({pais}).where({idEndereco});
             await knex('enderecos').update({userId}).where({idEndereco});
 
-
-            
             return res.status(200).json({ success: 'Cadastro atualizado com sucesso.'});
             
         } catch (error) {
@@ -80,7 +74,6 @@ module.exports = {
         }
 
     },
-
 
     async delete(req,res,next){
                 try{

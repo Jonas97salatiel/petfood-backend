@@ -5,7 +5,7 @@ exports.up = function(knex) {
         table.increments('id').primary();
         table.string('nome', 200);
         table.string('email', 200);
-        table.string('senha', 30);
+        table.string('senha', 255);
         table.string('telefone', 20);
 
         table.timestamp('dataCadastro').defaultTo(knex.fn.now());

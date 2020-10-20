@@ -13,5 +13,5 @@ exports.up = function(knex) {
 };
 
 exports.down = function(knex) {
-    return knex.schema.dropTable('tipoMovimentacao');
+    return knex.schema.dropTable('tipo_movimentacao');
 };

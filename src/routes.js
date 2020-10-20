@@ -1,5 +1,7 @@
 const express = require('express');
 
+const authMiddleware = require('./middlewares/auth')
+
 const UsuarioController = require('./controllers/UsuarioControllers');
 const EnderecoUsuariosControllers = require('./controllers/EnderecoUsuariosControllers');
 const ParceiroControllers = require('./controllers/ParceiroControllers');
@@ -22,13 +24,15 @@ const routes = express.Router();
 
 routes.get('/usuarios', UsuarioController.index);
 routes.post('/usuarios', UsuarioController.create);
-routes.put('/usuarios/:id', UsuarioController.alterUser);
+routes.put('/usuarios/:id', authMiddleware,UsuarioController.alterUser);
 routes.delete('/usuarios/:id', UsuarioController.delete);
+routes.get('/usuarios/login' ,UsuarioController.login);
+routes.post('/usuarios/logout', UsuarioController.logout);
 
 routes.post('/enderecos/:userId', EnderecoUsuariosControllers.create);
 routes.get('/enderecos', EnderecoUsuariosControllers.index);
 routes.put('/enderecos/:id_endereco', EnderecoUsuariosControllers.alterEndereco);
-routes.delete('/enderecos/:id_endereco', EnderecoUsuariosControllers.delete)
+routes.delete('/enderecos/:id_endereco', EnderecoUsuariosControllers.delete);
 
 routes.post('/parceiro', ParceiroControllers.create );
 routes.get('/parceiro', ParceiroControllers.index );
@@ -64,6 +68,9 @@ routes.delete('/TipoMovimentacao/:idTipoMovimentacao', TipoMovimentacaoControlle
 
 
 routes.post('/formaPagamento',FormaPagamentoControllers.create);
+routes.get('/formaPagamento',FormaPagamentoControllers.index);
+routes.put('/formaPagamento/:idFormaPagamento',FormaPagamentoControllers.alter);
+routes.delete('/formaPagamento',FormaPagamentoControllers.delete);
 
 routes.post('/historicoMovimentacao', HistoricoMovimentacaoControllers.create);
 

@@ -18,10 +18,10 @@ module.exports = {
     async create(req, res, next) {
 
 
-        const userId = req.headers.userId;
-        const { razaoSocial, cnpj, inscricaoEstadual, telefone } = req.body;
+        //const userId = req.headers.userId;
+        const { razaoSocial, cnpj, inscricaoEstadual, telefone, userId } = req.body;
 
-
+        console.log(userId);
 
         console.log(req.body);
 
@@ -49,7 +49,7 @@ module.exports = {
             const { idParceiro } = req.params;
             console.log(idParceiro)
 
-            const { razaoSocial, cnpj, inscricaoEstadual, telefone, userId} = req.body;
+            const { razaoSocial, cnpj, inscricaoEstadual, telefone, userId } = req.body;
             console.log(req.body)
 
             await knex('parceiro').update({ razaoSocial }).where({ idParceiro });
@@ -57,7 +57,7 @@ module.exports = {
             await knex('parceiro').update({ inscricaoEstadual }).where({ idParceiro });
             await knex('parceiro').update({ telefone }).where({ idParceiro });
             await knex('parceiro').update({ userId }).where({ idParceiro });
-           
+
 
 
 
@@ -70,18 +70,19 @@ module.exports = {
 
     },
 
-    async delete(req,res,next){
-        try{
-            const {idParceiro}=req.params
+
+    async delete(req, res, next) {
+        try {
+            const { idParceiro } = req.params
 
             await knex('parceiro')
-            .where({id})
-            .del()
+                .where({ idParceiro })
+                .del()
 
             return res.send()
-        }catch(error){
+        } catch (error) {
             next(error)
         }
+    }
 
-}
 }

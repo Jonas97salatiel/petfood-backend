@@ -1,7 +1,7 @@
 
 exports.up = function(knex) {
   
-    return knex.schema.createTable('eanProdutos', function(table){
+    return knex.schema.createTable('ean_produtos', function(table){
 
         table.increments('idEanProdutos').primary();
         table.string('EanProdutos', 50);
@@ -20,5 +20,5 @@ exports.up = function(knex) {
 };
 
 exports.down = function(knex) {
-    return knex.schema.dropTable('eanProdutos');
+    return knex.schema.dropTable('ean_produtos');
 };

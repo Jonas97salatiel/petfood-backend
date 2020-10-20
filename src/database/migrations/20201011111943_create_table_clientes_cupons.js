@@ -1,11 +1,11 @@
 exports.up = function(knex) {
 
-    return knex.schema.createTable('clientesCupons', function(table){
+    return knex.schema.createTable('clientes_cupons', function(table){
 
         table.increments('idClientesCupons').primary();
 
         table.integer('idCuponsDesconto')
-            .references('cuponsDesconto.idCuponsDesconto')
+            .references('cupons_desconto.idCuponsDesconto')
             .notNullable()
             .onDelete('CASCADE')
 
@@ -27,6 +27,6 @@ exports.up = function(knex) {
 
 exports.down = function(knex) {
 
-    return knex.schema.dropTable('pedidos');
+    return knex.schema.dropTable('clientes_cupons');
 
 };

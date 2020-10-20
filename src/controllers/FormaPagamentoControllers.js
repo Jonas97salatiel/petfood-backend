@@ -6,7 +6,7 @@ module.exports = {
     async index(req, res) {
 
         try {
-            const results = await knex('formaPagamento');
+            const results = await knex('forma_pagamentos');
             return res.json(results);
         } catch (error) {
             next(error);
@@ -16,45 +16,50 @@ module.exports = {
 
 
     async create(req, res, next) {
-
-
+        const { formaPagamento, descricao, parcelas} = req.body;
         
-        const { formaPgto, descricao} = req.body;
-
-
-
         console.log(req.body);
 
-        try {
-            await knex('formaPagamento').insert({
-                formaPgto: formaPgto,
-                descricao: descricao,
-                
-            });
+        const consultFPgmt = await knex('forma_pagamentos').where({descricao, parcelas});
 
-            return res.json() + console.log("Objeto cadastrado");
+        console.log(consultFPgmt.length);
 
-        } catch (error) {
-            console.log(error);
-            next(error);
+        if ( consultFPgmt.length > 0) {
+
+            return res.status(409).json({ warning: 'Forma de pagamento já cadastrada!'});
+            
+        }else{
+            try {
+            
+                await knex('forma_pagamentos').insert({
+                    formaPagamento: formaPagamento,
+                    descricao: descricao,
+                    parcelas: parcelas
+                    
+                });
+    
+                return res.status(200).json({ success: 'Forma de pagamento criado com sucesso!.'});
+    
+            } catch (error) {
+                console.log(error);
+                next(error);
+            }
         }
+
     },
 
-    async alterParceiro(req, res, next) {
+    async alter(req, res, next) {
 
         try {
 
-            const { idFormaPgto } = req.params;
-            console.log(idFormaPgto)
-
-            const { formaPgto, descricao} = req.body;
+            const {idFormaPagamento} = req.params;
+            console.log(idFormaPagamento)
+            const { formaPagamento, descricao, parcelas} = req.body;
             console.log(req.body)
 
-            await knex('formaPagamento').update({ formaPgto }).where({ idFormaPgto });
-            await knex('formaPagamento').update({ descricao }).where({ idFormaPgto });
-            
-
-
+            await knex('forma_pagamentos')
+                .update({ formaPagamento,  descricao, parcelas})
+                .where({ idFormaPagamento }); 
 
             return res.status(200).json({ success: 'Cadastro atualizado com sucesso.' });
 
@@ -62,6 +67,19 @@ module.exports = {
             console.log(error)
             next(error)
         }
+    },
 
+    async delete(req,res,next){
+        try{
+            const {idFormaPagamento}=req.params
+
+            await knex('forma_pagamentos')
+            .where({idFormaPagamento})
+            .del()
+
+            return res.send()
+        }catch(error){
+            next(error)
+        }
     }
 }
