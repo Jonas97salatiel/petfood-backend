@@ -7,6 +7,8 @@ const FormaPagamentoControllers = require('./controllers/FormaPagamentoControlle
 const HistoricoMovimentacaoControllers = require('./controllers/HistoricoMovimentacaoControllers');
 const ClienteControllers = require('./controllers/ClienteControllers');
 const MarcaControllers = require('./controllers/MarcaControllers');
+const CategoriaControllers = require('./controllers/CategoriaControllers');
+
 
 
 
@@ -40,6 +42,11 @@ routes.put('/marca/:idMarca', MarcaControllers.alterMarca);
 routes.get('/marca', MarcaControllers.index);
 routes.delete('/marca/:idMarca', MarcaControllers.delete);
 
+
+routes.post('/categoria', CategoriaControllers.create);
+routes.put('/categoria/:idCategoria', CategoriaControllers.alterCategoria);
+routes.get('/categoria', CategoriaControllers.index);
+routes.delete('/categoria/:idCategoria', CategoriaControllers.delete);
 
 
 routes.post('/formaPagamento',FormaPagamentoControllers.create);
