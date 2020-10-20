@@ -16,9 +16,19 @@ module.exports = {
 
     async create(req, res, next){
 
+<<<<<<< HEAD
         const userId = req.headers.userId;
         const { cep, rua, numero, complemento, bairro, cidade, uf, pais } = req.body;
         
+=======
+
+       // const userId = req.headers.userId;
+
+        const { cep, rua, numero, complemento, bairro, cidade, uf, pais,userId } = req.body;
+        
+        
+        console.log(userId);
+>>>>>>> a1f4c6aa67ce0b9298349d0bdc6d0756618cd6a3
         console.log(req.body);
         
         try {
@@ -34,7 +44,11 @@ module.exports = {
                 userId:userId
             })
 
+<<<<<<< HEAD
             return res.status(200).json({ success: 'Endereço criado com sucesso.'});
+=======
+            return res.status(200).json({ success: 'Endereço criado com sucesso!.'});
+>>>>>>> a1f4c6aa67ce0b9298349d0bdc6d0756618cd6a3
 
         } catch (error) {
             console.log(error);

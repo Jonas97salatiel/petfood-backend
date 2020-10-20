@@ -18,10 +18,10 @@ module.exports = {
     async create(req, res, next) {
 
 
-        const userId = req.headers.userId;
-        const { razaoSocial, cnpj, inscricaoEstadual, telefone } = req.body;
+        //const userId = req.headers.userId;
+        const { razaoSocial, cnpj, inscricaoEstadual, telefone, userId } = req.body;
 
-
+        console.log(userId);
 
         console.log(req.body);
 
@@ -46,20 +46,18 @@ module.exports = {
 
         try {
 
-            const { idEndereco } = req.params;
-            console.log(idEndereco)
+            const { idParceiro } = req.params;
+            console.log(idParceiro)
 
-            const { cep, rua, numero, complemento, bairro, cidade, uf, pais} = req.body;
+            const { razaoSocial, cnpj, inscricaoEstadual, telefone, userId } = req.body;
             console.log(req.body)
 
-            await knex('enderecos').update({ cep }).where({ idEndereco });
-            await knex('enderecos').update({ rua }).where({ idEndereco });
-            await knex('enderecos').update({ numero }).where({ idEndereco });
-            await knex('enderecos').update({ complemento }).where({ idEndereco });
-            await knex('enderecos').update({ bairro }).where({ idEndereco });
-            await knex('enderecos').update({ cidade }).where({ idEndereco });
-            await knex('enderecos').update({ uf }).where({ idEndereco });
-            await knex('enderecos').update({ pais }).where({ idEndereco });
+            await knex('parceiro').update({ razaoSocial }).where({ idParceiro });
+            await knex('parceiro').update({ cnpj }).where({ idParceiro });
+            await knex('parceiro').update({ inscricaoEstadual }).where({ idParceiro });
+            await knex('parceiro').update({ telefone }).where({ idParceiro });
+            await knex('parceiro').update({ userId }).where({ idParceiro });
+            
 
 
 
@@ -70,5 +68,21 @@ module.exports = {
             next(error)
         }
 
+    },
+
+    
+    async delete(req,res,next){
+        try{
+            const {idParceiro}=req.params
+
+            await knex('parceiro')
+            .where({idParceiro})
+            .del()
+
+            return res.send()
+        }catch(error){
+            next(error)
+        }
     }
+
 }
