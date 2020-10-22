@@ -4,7 +4,7 @@ exports.up = function(knex) {
 
         table.increments('idTipoMovimentacao').primary();
         table.string('descTipoMovimentacao', 100);
-        table.string('tipoMovimentacao', 1);
+        table.string('tipoMovimentacao', 100);
         table.date('dataMovimentacao');
 
         table.timestamps(true, true);

@@ -80,7 +80,7 @@ module.exports = {
             .del()
 
             return res.send()
-        }catch(error){
+        } catch (error) {
             next(error)
         }
     }
