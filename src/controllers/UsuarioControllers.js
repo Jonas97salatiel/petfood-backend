@@ -58,7 +58,7 @@ module.exports = {
                   next(error);
               }
 
-        }
+        
         
         try {
            await knex('usuarios').insert({
@@ -72,6 +72,7 @@ module.exports = {
             console.log(error);
             next(error);
         } 
+    }
 
     },
 

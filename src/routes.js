@@ -20,7 +20,7 @@ routes.delete('/usuarios/:id', UsuarioController.delete);
 routes.get('/usuarios/login' ,UsuarioController.login);
 routes.post('/usuarios/logout', UsuarioController.logout);
 
-routes.post('/enderecos', EnderecoUsuariosControllers.create);
+routes.post('/enderecos/:userId', EnderecoUsuariosControllers.create);
 routes.get('/enderecos', EnderecoUsuariosControllers.index);
 routes.put('/enderecos/:id_endereco', EnderecoUsuariosControllers.alterEndereco);
 routes.delete('/enderecos/:id_endereco', EnderecoUsuariosControllers.delete);
@@ -39,6 +39,14 @@ routes.delete('/produto/:idProduto',ProdutoControllers.delete);
 routes.post('/clientes', ClienteControllers.create);
 routes.put('/clientes', ClienteControllers.alterCliente);
 routes.get('/clientes', ClienteControllers.indexCliente);
+
+
+routes.post('/marca', MarcaControllers.create);
+routes.put('/marca/:idMarca', MarcaControllers.alterMarca);
+routes.get('/marca', MarcaControllers.index);
+routes.delete('/marca/:idMarca', MarcaControllers.delete);
+
+
 
 routes.post('/formaPagamento',FormaPagamentoControllers.create);
 routes.get('/formaPagamento',FormaPagamentoControllers.index);
