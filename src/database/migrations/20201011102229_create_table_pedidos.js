@@ -18,7 +18,7 @@ exports.up = function(knex) {
             .notNullable()
             .onDelete('CASCADE')
 
-        table.integer('cupons_desconto')
+        table.integer('idCuponsDesconto')
             .references('cupons_desconto.idCuponsDesconto')
             .notNullable()
             .onDelete('CASCADE')

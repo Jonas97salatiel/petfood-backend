@@ -74,7 +74,6 @@ module.exports = {
         } 
     }
 
-    }
 },
 
     async alterUser(req, res, next){

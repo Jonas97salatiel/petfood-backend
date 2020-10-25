@@ -16,11 +16,9 @@ module.exports = {
 
     async create(req, res, next){
 
-
        // const userId = req.headers.userId;
 
         const { cep, rua, numero, complemento, bairro, cidade, uf, pais,userId } = req.body;
-        
         
         console.log(userId);
         console.log(req.body);
@@ -69,8 +67,10 @@ module.exports = {
             return res.status(200).json({ success: 'Cadastro atualizado com sucesso.'});
             
         } catch (error) {
+
             console.log(error)
             next(error)
+
         }
 
     },
