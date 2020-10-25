@@ -3,8 +3,8 @@ exports.up = function(knex) {
     return knex.schema.createTable('pedidos_produtos', function(table){
 
         table.increments('idPedidosProdutos').primary();
-        table.integer('qtdProduto');
-        table.float('valorProduto');
+        table.integer('quantidade');
+       
 
         table.integer('idPedidos')
             .references('pedidos.idPedidos')

@@ -4,10 +4,11 @@ exports.up = function(knex) {
 
         table.increments('idcartoes').primary();
         table.string('bandeira');
-        table.string('descricao');
         table.string('numeroCartao');
         table.string('tipoOperacao');
         table.date('validade');
+        table.integer('cvv');
+        table.string('nomeTitular')
 
         table.integer('idFormaPagamento')
             .references('forma_pagamentos.idFormaPagamento')

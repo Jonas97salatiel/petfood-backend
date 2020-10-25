@@ -7,7 +7,7 @@ exports.up = function(knex) {
         table.date('dataValidade');
         table.boolean('status');
         table.float('valor');
-        table.string('tipoCupom');
+       
         
 
         table.timestamps(true, true);

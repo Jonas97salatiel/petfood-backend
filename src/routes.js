@@ -12,6 +12,8 @@ const MarcaControllers = require('./controllers/MarcaControllers');
 const CategoriaControllers = require('./controllers/CategoriaControllers');
 const CuponsControllers = require('./controllers/CuponsControllers');
 const TipoMovimentacaoControllers = require('./controllers/TipoMovimentacaoControllers');
+const CarrinhoComprasControllers = require('./controllers/CarrinhoComprasControllers');
+
 
 
 
@@ -71,6 +73,12 @@ routes.post('/formaPagamento',FormaPagamentoControllers.create);
 routes.get('/formaPagamento',FormaPagamentoControllers.index);
 routes.put('/formaPagamento/:idFormaPagamento',FormaPagamentoControllers.alter);
 routes.delete('/formaPagamento',FormaPagamentoControllers.delete);
+
+
+routes.post('/carrinhoCompras',CarrinhoComprasControllers.create);
+routes.get('/carrinhoCompras',CarrinhoComprasControllers.index);
+routes.put('/carrinhoCompras/:idCarrinhoCompras',CarrinhoComprasControllers.alter);
+routes.delete('/carrinhoCompras',CarrinhoComprasControllers.delete);
 
 routes.post('/historicoMovimentacao', HistoricoMovimentacaoControllers.create);
 
