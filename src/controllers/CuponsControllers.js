@@ -30,7 +30,7 @@ module.exports = {
                 dataValidade: dataValidade,
                 status: status,
                 valor: valor,
-                tipoCupom: tipoCupom
+                
             });
 
             return res.json() + console.log("Objeto cadastrado");
@@ -47,14 +47,13 @@ module.exports = {
 
             const { idCuponsDesconto } = req.params;
 
-            const { descCupom, dataValidade, status, valor, tipoCupom } = req.body;
+            const { descCupom, dataValidade, status, valor } = req.body;
             console.log(req.body)
 
             await knex('cupons_desconto').update({ descCupom }).where({ idCuponsDesconto });
             await knex('cupons_desconto').update({ dataValidade }).where({ idCuponsDesconto });
             await knex('cupons_desconto').update({ status }).where({ idCuponsDesconto });
             await knex('cupons_desconto').update({ valor }).where({ idCuponsDesconto });
-            await knex('cupons_desconto').update({ tipoCupom }).where({ idCuponsDesconto });
 
 
 

@@ -19,7 +19,7 @@ module.exports = {
 
 
         //const idParceiro = req.headers.idParceiro;
-        const { descricaoProduto, valor, qtdEstoque, medida,peso, status, idParceiro } = req.body;
+        const { descricaoProduto, valor, qtdEstoque, medida,peso, status,idMarca,idEspecie,idCategoria,idParceiro } = req.body;
 
 
         console.log(req.body);
@@ -32,6 +32,9 @@ module.exports = {
                 medida: medida,
                 peso: peso,
                 status: status,
+                idMarca: idMarca,
+                idEspecie: idEspecie,
+                idCategoria:idCategoria,
                 idParceiro: idParceiro
             });
 
@@ -50,7 +53,7 @@ module.exports = {
             const { idProduto } = req.params;
             
 
-            const { descricaoProduto, valor, qtdEstoque, medida,peso, status, idParceiro } = req.body;
+            const { descricaoProduto, valor, qtdEstoque, medida,peso, status,idMarca,idEspecie,idCategoria,idParceiro } = req.body;
             console.log(req.body)
 
             await knex('produtos').update({ descricaoProduto }).where({ idProduto });
@@ -59,6 +62,9 @@ module.exports = {
             await knex('produtos').update({ medida }).where({ idProduto });
             await knex('produtos').update({ peso }).where({ idProduto });
             await knex('produtos').update({ status }).where({ idProduto });
+            await knex('produtos').update({ idMarca }).where({ idProduto });
+            await knex('produtos').update({ idEspecie }).where({ idProduto });
+            await knex('produtos').update({ idCategoria }).where({ idProduto });
             await knex('produtos').update({ idParceiro }).where({ idProduto });
          
             return res.status(200).json({ success: 'Cadastro atualizado com sucesso.' });

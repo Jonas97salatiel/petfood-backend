@@ -5,6 +5,8 @@ exports.up = function(knex) {
 
         table.increments('idCliente').primary();
         table.integer('cpf', 11);
+        table.string('nome', 100);
+
    
 
         //relacionamento
