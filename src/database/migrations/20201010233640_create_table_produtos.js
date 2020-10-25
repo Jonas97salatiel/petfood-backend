@@ -31,7 +31,7 @@ exports.up = function(knex) {
 
          //relacionamento
          table.integer('idCategoria')
-         .references('categoria.idCategoria')
+         .references('categorias.idCategoria')
          .notNullable()
          .onDelete('CASCADE')
 
