@@ -18,6 +18,11 @@ exports.up = function(knex) {
             .notNullable()
             .onDelete('CASCADE')
 
+        table.integer('cupons_desconto')
+            .references('cupons_desconto.idCuponsDesconto')
+            .notNullable()
+            .onDelete('CASCADE')
+
        
    
         table.timestamps(true, true);
