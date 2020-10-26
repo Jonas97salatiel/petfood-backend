@@ -1,8 +1,6 @@
 const knex = require('../database/index');
 
-
 module.exports = {
-
 
     async index(req, res, next){
 
@@ -21,9 +19,13 @@ module.exports = {
         const {valorPedido, status, numeroTransacao, idCliente, idFormaPagamento, idCuponsDesconto} = req.body;
         console.log(req.body);
 
-        try {
+        let listaProdutos = req.body.ListaProdutos;
+
+        console.log(listaProdutos);
+
+       try {
             
-            let {idPedidos} = await knex('pedidos').insert({
+            const {idPedidos} = await knex('pedidos').insert({
                 
                 valorPedido: valorPedido,
                 status: status,
@@ -32,16 +34,27 @@ module.exports = {
                 idFormaPagamento: idFormaPagamento,
                 idCuponsDesconto: idCuponsDesconto
 
-            })
+             });
+            
+             for (let index = 0; index < listaProdutos.length;) {
+                 
+                const {idProduto, qtd} = listaProdutos[index];
+
+                await knex('pedidos_produtos').insert({
+                    qtd: qtd,
+                    idPedidos: idPedidos,
+                    idProduto:idProduto
+                })
+
+                index++
+             }
+
+            return res.status(200).json({success: 'Pedido cadastrado com sucesso!'})
 
         } catch (error) {
             console.log(error);
         }
 
     }
-
-    
-
-
 
 }

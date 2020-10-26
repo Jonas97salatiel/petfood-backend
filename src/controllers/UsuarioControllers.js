@@ -50,7 +50,7 @@ module.exports = {
                 });
 
                   console.log(req.body);
-                  return res.status(200).json({ success: 'Usuario criado com sucesso!.', 
+                  return res.status(200).json({ success: 'Usuario criado com sucesso!', 
                                                 auth: true, 
                                                 token: token});
               } catch (error) {

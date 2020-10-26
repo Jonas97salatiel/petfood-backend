@@ -14,6 +14,7 @@ const ProdutoControllers = require('./controllers/ProdutoControllers');
 const CuponsControllers = require('./controllers/CuponsControllers');
 const TipoMovimentacaoControllers = require('./controllers/TipoMovimentacaoControllers');
 const CarrinhoComprasControllers = require('./controllers/CarrinhoComprasControllers');
+const PedidosControllers = require('./controllers/PedidosControllers');
 
 const routes = express.Router();
 
@@ -38,6 +39,9 @@ routes.post('/produto', ProdutoControllers.create );
 routes.get('/produto',ProdutoControllers.index);
 routes.put('/produto/:idProduto',ProdutoControllers.alterProduto);
 routes.delete('/produto/:idProduto',ProdutoControllers.delete);
+
+routes.post('/pedido', PedidosControllers.create);
+
 
 routes.post('/clientes', ClienteControllers.create);
 routes.put('/clientes', ClienteControllers.alterCliente);
