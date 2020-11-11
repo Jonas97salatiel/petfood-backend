@@ -1,5 +1,5 @@
 const knex = require('../database/index');
-
+const imageProduto = require('../controllers/ImageControllers');
 
 module.exports = {
 
@@ -48,9 +48,11 @@ module.exports = {
                 urlImage: 'null'
             });
 
+          const urlImage =  await imageProduto.uploadImage(imagem, idProduto);
 
+          await knex('produtos').update({ urlImage }).where({ idProduto });
 
-            return res.json() + console.log(`Produto cadastrado com sucesso${idProduto}`);
+            return res.json() + console.log(`Produto cadastrado com sucesso${idProduto}. Url da imagem ${urlImage}`);
 
         } catch (error) {
             console.log(error);
