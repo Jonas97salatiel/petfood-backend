@@ -8,6 +8,7 @@ exports.up = function(knex) {
         table.integer('cnpj');
         table.integer('inscricaoEstadual');
         table.string('telefone', 20);
+        table.string('urlImageLogo');
    
 
         //relacionamento

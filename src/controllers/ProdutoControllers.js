@@ -17,15 +17,24 @@ module.exports = {
 
     async create(req, res, next) {
 
-
         //const idParceiro = req.headers.idParceiro;
-        const { descricaoProduto, valor, qtdEstoque, medida,peso, status,idMarca,idEspecie,idCategoria,idParceiro } = req.body;
-
+        const { descricaoProduto, 
+                valor, 
+                qtdEstoque, 
+                medida,
+                peso, 
+                status, 
+                idMarca,
+                idEspecie,
+                idCategoria,
+                idParceiro,
+                imagem 
+             } = req.body;
 
         console.log(req.body);
 
         try {
-            await knex('produtos').insert({
+            const {idProduto} = await knex('produtos').insert({
                 descricaoProduto: descricaoProduto,
                 valor: valor,
                 qtdEstoque: qtdEstoque,
@@ -35,10 +44,13 @@ module.exports = {
                 idMarca: idMarca,
                 idEspecie: idEspecie,
                 idCategoria:idCategoria,
-                idParceiro: idParceiro
+                idParceiro: idParceiro,
+                urlImage: 'null'
             });
 
-            return res.json() + console.log("Objeto cadastrado");
+
+
+            return res.json() + console.log(`Produto cadastrado com sucesso${idProduto}`);
 
         } catch (error) {
             console.log(error);
