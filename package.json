@@ -16,8 +16,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "dev": "nodemon src/server.js",
-    "start": "./node_modules/.bin/knex migrate:latest node src/server.js" 
+    "start": "./node_modules/.bin/knex migrate:latest & nodemon src/server.js",
+    "migration": "./node_modules/.bin/knex migrate:latest node src/server.js" 
   },
   "keywords": [],
   "author": "",
