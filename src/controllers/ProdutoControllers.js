@@ -62,7 +62,7 @@ module.exports = {
                         idParceiro })
                     .update({ urlImage:  urlImage});
 
-            return res.json() + console.log(`Produto cadastrado com sucesso${idProduto}. Url da imagem ${urlImage}`);
+            return res.json(200) + console.log(`Produto cadastrado com sucesso${idProduto}. Url da imagem ${urlImage}`);
 
         } catch (error) {
             console.log(error);

@@ -31,7 +31,7 @@ module.exports  = {
 
     },
 
-    async uploadImageLogoParceiro(image, idParceiro, res){
+    async uploadImageLogoParceiro(image, idParceiro, url){
 
         const blobSvc = azure.createBlobService(process.env.ACCESS_KEY_AZURE);
 
@@ -53,12 +53,11 @@ module.exports  = {
         });
 
         const fileUrl = `https://petfood.blob.core.windows.net/imagens/${filename}`;
-        return res.json({
-        url: fileUrl
-    });
+        
+        return url = fileUrl;
 
     },
-    async uploadImageCliente(image, idCliente, res){
+    async uploadImageCliente(image, idCliente, url){
 
         const blobSvc = azure.createBlobService(process.env.ACCESS_KEY_AZURE);
 
@@ -80,9 +79,8 @@ module.exports  = {
         });
 
         const fileUrl = `https://petfood.blob.core.windows.net/imagens/${filename}`;
-        return res.json({
-        url: fileUrl
-    });
+        
+        return url = fileUrl;
 
     }
 
