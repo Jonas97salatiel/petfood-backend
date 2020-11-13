@@ -34,7 +34,7 @@ module.exports = {
                 userId: userId
             });
 
-            return res.json() + console.log("Objeto cadastrado");
+            return res.status(200).json({ success: 'Parceiro criado com sucesso!'});
 
         } catch (error) {
             console.log(error);

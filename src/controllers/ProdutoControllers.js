@@ -31,14 +31,12 @@ module.exports = {
                 imagem 
              } = req.body;
 
-        console.log(req.body);
-
         try {
-            const {idProduto} = await knex('produtos').insert({
+             await knex('produtos').insert({
                 descricaoProduto: descricaoProduto,
                 valor: valor,
-                qtdEstoque: qtdEstoque,
-                medida: medida,
+                quantidade: qtdEstoque,
+                unidadeMedida: medida,
                 peso: peso,
                 status: status,
                 idMarca: idMarca,
@@ -48,9 +46,23 @@ module.exports = {
                 urlImage: 'null'
             });
 
+            const result = await knex('produtos')
+                                    .select('idProduto')
+                                    .where({  
+                                        descricaoProduto: descricaoProduto,
+                                        idParceiro: idParceiro
+                                    })
+            const idProduto = result[0].idProduto;
+    
+
           const urlImage =  await imageProduto.uploadImage(imagem, idProduto);
 
-          await knex('produtos').update({ urlImage }).where({ idProduto });
+          await knex('produtos')
+                    .update({ urlImage })
+                    .where({ 
+                        idProduto:idProduto,
+                        idParceiro: idParceiro
+                    });
 
             return res.json() + console.log(`Produto cadastrado com sucesso${idProduto}. Url da imagem ${urlImage}`);
 

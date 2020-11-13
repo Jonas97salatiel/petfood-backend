@@ -1,19 +1,15 @@
 // Update with your config settings.
+require('dotenv/config');
 
 module.exports = {
-
-  development: {
+  development:{
     client: 'pg',
-    connection: {
-      host : '127.0.0.1',
-      user: "postgres",
-      password: "1234",
-      database: 'petfood'
-    },
+    connection: process.env.DATABASE_URL,
+    searchPath: ['knex', 'public'],
     
     migrations: {
       tableName: 'knex_migrations',
       directory: `${__dirname}/src/database/migrations`
     },
-  }
+  },
 };

@@ -1,10 +1,14 @@
 const express = require('express');
 
+require('dotenv').config();
+
 const routes = require('./routes');
 
-
+const cors = require('cors');
 
 const app = express();
+
+app.use(cors());
 
 app.use(express.json());
 
@@ -16,8 +20,8 @@ app.use((error, req, res, next) => {
     res.json({ error: error.menssage})
 })
 
+var porta = process.env.PORT || 8080;
 
-
-app.listen(3333, ()=> console.log('Server is running'));
+app.listen(porta, ()=> console.log('Server is running'));
 
 

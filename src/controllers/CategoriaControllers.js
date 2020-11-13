@@ -31,7 +31,7 @@ module.exports = {
                 
             });
 
-            return res.json() + console.log("Objeto cadastrado");
+            return res.status(200).json({ success: 'Categoria criada com sucesso.' });
 
         } catch (error) {
             console.log(error);

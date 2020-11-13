@@ -9,6 +9,7 @@ const FormaPagamentoControllers = require('./controllers/FormaPagamentoControlle
 const HistoricoMovimentacaoControllers = require('./controllers/HistoricoMovimentacaoControllers');
 const ClienteControllers = require('./controllers/ClienteControllers');
 const MarcaControllers = require('./controllers/MarcaControllers');
+const EspecieControllers = require('./controllers/EspeciesControllers');
 const CategoriaControllers = require('./controllers/CategoriaControllers');
 const ProdutoControllers = require('./controllers/ProdutoControllers');
 const CuponsControllers = require('./controllers/CuponsControllers');
@@ -50,6 +51,11 @@ routes.post('/marca', MarcaControllers.create);
 routes.put('/marca/:idMarca', MarcaControllers.alterMarca);
 routes.get('/marca', MarcaControllers.index);
 routes.delete('/marca/:idMarca', MarcaControllers.delete);
+
+routes.post('/especie', EspecieControllers.create);
+routes.put('/especie/:idEspecie', EspecieControllers.alter);
+routes.get('/especie', EspecieControllers.index);
+routes.delete('/especie/:idEspecie', EspecieControllers.delete);
 
 routes.post('/categoria', CategoriaControllers.create);
 routes.put('/categoria/:idCategoria', CategoriaControllers.alterCategoria);

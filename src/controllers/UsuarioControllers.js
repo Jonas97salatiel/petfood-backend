@@ -28,7 +28,7 @@ module.exports = {
 
         console.log(userEmail.length);
 
-        if( userEmail.length === 1 ){
+        if( userEmail.length > 0 ){
 
             return res.status(409).json({ warning: 'E-mail já está sendo utilizado!.'});
             
