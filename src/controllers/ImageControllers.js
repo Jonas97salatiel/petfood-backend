@@ -4,13 +4,13 @@ require('dotenv').config()
 
 module.exports  = {
 
-    async uploadImageProduto(image, idProduto, url){
+    async uploadImageProduto(imagem, idProduto, url){
 
         const blobSvc = azure.createBlobService(process.env.ACCESS_KEY_AZURE);
 
         let filename = 'produto' + idProduto + '.jpg';
 
-        let matches = image.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
+        let matches = imagem.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
 
         let type = matches[1];
 
@@ -31,13 +31,13 @@ module.exports  = {
 
     },
 
-    async uploadImageLogoParceiro(image, idParceiro, url){
+    async uploadImageLogoParceiro(imagem, idParceiro, url){
 
         const blobSvc = azure.createBlobService(process.env.ACCESS_KEY_AZURE);
 
         let filename = 'LogoParceiro' + idParceiro + '.jpg';
 
-        let matches = image.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
+        let matches = imagem.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
 
         let type = matches[1];
 
@@ -57,13 +57,13 @@ module.exports  = {
         return url = fileUrl;
 
     },
-    async uploadImageCliente(image, idCliente, url){
+    async uploadImageCliente(imagem, idCliente, url){
 
         const blobSvc = azure.createBlobService(process.env.ACCESS_KEY_AZURE);
 
         let filename = 'cliente' + idCliente + '.jpg';
 
-        let matches = image.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
+        let matches = imagem.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
 
         let type = matches[1];
 

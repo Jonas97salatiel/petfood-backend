@@ -78,7 +78,7 @@ module.exports = {
             
             const { descricaoProduto, valor, qtdEstoque, medida,peso, status,idMarca,idEspecie,idCategoria,idParceiro, imagem } = req.body;
 
-            const urlImage =  await imageProduto.uploadImageProduto(imagem, idProduto, res);
+            const urlImage =  await imageProduto.uploadImageProduto(imagem, idProduto);
 
             const produtos = await knex('produtos')
                     .update({ 

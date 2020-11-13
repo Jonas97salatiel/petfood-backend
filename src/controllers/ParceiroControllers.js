@@ -19,11 +19,9 @@ module.exports = {
 
 
         //const userId = req.headers.userId;
-        const { razaoSocial, cnpj, inscricaoEstadual, telefone, userId } = req.body;
+        const { razaoSocial, cnpj, inscricaoEstadual, telefone, userId, imagem } = req.body;
 
-        console.log(userId);
-
-        console.log(req.body);
+        
 
         try {
             await knex('parceiro').insert({
