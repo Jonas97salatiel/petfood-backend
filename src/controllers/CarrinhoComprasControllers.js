@@ -19,7 +19,7 @@ module.exports = {
 
 
         //const userId = req.headers.userId;
-        const { valorTotal, idProdutos} = req.body;
+        const { valorTotal,idProdutos} = req.body;
 
         
 
@@ -27,8 +27,9 @@ module.exports = {
 
         try {
             await knex('carrinhoCompras').insert({
-               idProdutos: idProdutos,
+               
                 valorTotal: valorTotal,
+                idProdutos: idProdutos
                 
             });
 
@@ -40,16 +41,18 @@ module.exports = {
         }
     },
 
-    async alterCategoria(req, res, next) {
+    async alter(req, res, next) {
 
         try {
 
-            const { idCategoria } = req.params;
+            const { idCarrinhoCompras } = req.params;
 
-            const { descricaoCategoria} = req.body;
+            const { valorTotal, idProdutos} = req.body;
             console.log(req.body)
 
-            await knex('categorias').update({ descricaoCategoria }).where({ idCategoria });
+            await knex('carrinhoCompras').update({ valorTotal }).where({ idCarrinhoCompras });
+            await knex('carrinhoCompras').update({ idProdutos }).where({ idCarrinhoCompras });
+
             
 
             return res.status(200).json({ success: 'Cadastro atualizado com sucesso.' });
@@ -64,10 +67,10 @@ module.exports = {
 
     async delete(req, res, next) {
         try {
-            const { idCategoria } = req.params
+            const { idCarrinhoCompras } = req.params
 
-            await knex('categorias')
-                .where({ idCategoria })
+            await knex('carrinhoCompras')
+                .where({ idCarrinhoCompras })
                 .del()
 
             return res.send()
