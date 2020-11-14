@@ -14,7 +14,6 @@ module.exports = {
 
     },
 
-
     async create(req, res, next) {
 
         //const idParceiro = req.headers.idParceiro;

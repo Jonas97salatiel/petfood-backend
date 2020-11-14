@@ -9,9 +9,11 @@ module.exports = {
         try {
             
             const results = await knex('pedidos').where({idParceiro});
+            
+            console.log(results);
 
-            if (results.length = 0) {
-                return res.status(200).json({ });
+            if (results.length === 0) {
+                return res.status(200).json({});
             } else {
                 return res.json(results);
             }       
