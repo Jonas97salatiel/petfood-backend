@@ -4,8 +4,9 @@ exports.up = function(knex) {
     return knex.schema.createTable('clientes', function(table){
 
         table.increments('idCliente').primary();
-        table.integer('cpf', 11);
+        table.string('cpf', 11);
         table.string('nome', 100);
+        table.string('urlImage');
 
    
 

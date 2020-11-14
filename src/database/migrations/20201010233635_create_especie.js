@@ -4,11 +4,6 @@ exports.up = function(knex) {
 
         table.increments('idEspecie').primary();
         table.string('descricao', 50);
-        
-
-
-        
-
 
         table.timestamps(true, true);
 

@@ -10,10 +10,7 @@ exports.up = function(knex) {
         table.string('status');
         table.string('nome');
         table.integer('quantidade');
-
-
-        
-
+        table.string('urlImage');
         
         table.timestamps(true, true);
 
@@ -31,7 +28,7 @@ exports.up = function(knex) {
 
          //relacionamento
          table.integer('idCategoria')
-         .references('categoria.idCategoria')
+         .references('categorias.idCategoria')
          .notNullable()
          .onDelete('CASCADE')
 

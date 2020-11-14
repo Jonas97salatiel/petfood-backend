@@ -5,8 +5,7 @@ exports.up = function(knex) {
         table.increments('idPedidos').primary();
         table.float('valorPedido');
         table.string('status');
-        table.string('numeroTransacao');
-            
+        table.string('numeroTransacao');   
 
         table.integer('idCliente')
             .references('clientes.idCliente')
@@ -18,7 +17,16 @@ exports.up = function(knex) {
             .notNullable()
             .onDelete('CASCADE')
 
-       
+        table.integer('idCuponsDesconto')
+            .references('cupons_desconto.idCuponsDesconto')
+            .notNullable()
+            .onDelete('CASCADE')
+
+        table.integer('idParceiro')
+            .references('parceiro.idParceiro')
+            .notNullable()
+            .onDelete('CASCADE')
+        
    
         table.timestamps(true, true);
 

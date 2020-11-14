@@ -5,9 +5,10 @@ exports.up = function(knex) {
 
         table.increments('idParceiro').primary();
         table.string('razaoSocial', 50);
-        table.integer('cnpj');
-        table.integer('inscricaoEstadual');
+        table.string('cnpj', 18);
+        table.string('inscricaoEstadual', 12);
         table.string('telefone', 20);
+        table.string('urlImageLogo');
    
 
         //relacionamento

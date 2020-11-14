@@ -4,7 +4,9 @@
   "description": "",
   "main": "src/server.js",
   "dependencies": {
+    "azure-storage": "^2.10.3",
     "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
     "dotenv-safe": "^8.2.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
@@ -14,7 +16,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "nodemon src/server.js"
+    "start": "./node_modules/.bin/knex migrate:latest & nodemon src/server.js",
+    "migration": "./node_modules/.bin/knex migrate:latest node src/server.js"
   },
   "keywords": [],
   "author": "",

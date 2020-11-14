@@ -9,11 +9,14 @@ const FormaPagamentoControllers = require('./controllers/FormaPagamentoControlle
 const HistoricoMovimentacaoControllers = require('./controllers/HistoricoMovimentacaoControllers');
 const ClienteControllers = require('./controllers/ClienteControllers');
 const MarcaControllers = require('./controllers/MarcaControllers');
+const EspecieControllers = require('./controllers/EspeciesControllers');
 const CategoriaControllers = require('./controllers/CategoriaControllers');
+const ProdutoControllers = require('./controllers/ProdutoControllers');
 const CuponsControllers = require('./controllers/CuponsControllers');
 const TipoMovimentacaoControllers = require('./controllers/TipoMovimentacaoControllers');
 const CarrinhoComprasControllers = require('./controllers/CarrinhoComprasControllers');
 const ProdutosControllers = require('./controllers/ProdutoControllers');
+const PedidosControllers = require('./controllers/PedidosControllers');
 
 
 
@@ -43,21 +46,31 @@ routes.put('/produto/:idProduto', ProdutosControllers.alterProduto);
 routes.put('/produto/:idProduto', ProdutosControllers.delete);
 
 routes.post('/parceiro', ParceiroControllers.create );
-routes.get('/parceiro', ParceiroControllers.index );
-routes.put('/parceiro/:idParceiro', ParceiroControllers.alterParceiro);
-routes.put('/parceiro/:idParceiro', ParceiroControllers.delete);
+routes.get('/parceiro',ParceiroControllers.index);
+routes.put('/parceiro/:idParceiro',ParceiroControllers.alterParceiro);
+routes.delete('/parceiro/:idParceiro',ParceiroControllers.delete);
 
+routes.post('/produto', ProdutoControllers.create );
+routes.get('/produto',ProdutoControllers.index);
+routes.put('/produto/:idProduto',ProdutoControllers.alterProduto);
+routes.delete('/produto/:idProduto',ProdutoControllers.delete);
+
+routes.post('/pedido', PedidosControllers.create);
+routes.get('/pedido/:idParceiro', PedidosControllers.index);
 
 routes.post('/clientes', ClienteControllers.create);
 routes.put('/clientes', ClienteControllers.alterCliente);
 routes.get('/clientes', ClienteControllers.indexCliente);
-
 
 routes.post('/marca', MarcaControllers.create);
 routes.put('/marca/:idMarca', MarcaControllers.alterMarca);
 routes.get('/marca', MarcaControllers.index);
 routes.delete('/marca/:idMarca', MarcaControllers.delete);
 
+routes.post('/especie', EspecieControllers.create);
+routes.put('/especie/:idEspecie', EspecieControllers.alter);
+routes.get('/especie', EspecieControllers.index);
+routes.delete('/especie/:idEspecie', EspecieControllers.delete);
 
 routes.post('/categoria', CategoriaControllers.create);
 routes.put('/categoria/:idCategoria', CategoriaControllers.alterCategoria);
@@ -74,16 +87,13 @@ routes.put('/TipoMovimentacao/:idTipoMovimentacao', TipoMovimentacaoControllers.
 routes.get('/TipoMovimentacao', TipoMovimentacaoControllers.index);
 routes.delete('/TipoMovimentacao/:idTipoMovimentacao', TipoMovimentacaoControllers.delete);
 
-
 routes.post('/formaPagamento',FormaPagamentoControllers.create);
 routes.get('/formaPagamento',FormaPagamentoControllers.index);
 routes.put('/formaPagamento/:idFormaPagamento',FormaPagamentoControllers.alter);
 routes.delete('/formaPagamento',FormaPagamentoControllers.delete);
 
-
 routes.post('/carrinhoCompras',CarrinhoComprasControllers.create);
 routes.get('/carrinhoCompras',CarrinhoComprasControllers.index);
-routes.put('/carrinhoCompras/:idCarrinhoCompras',CarrinhoComprasControllers.alter);
 routes.delete('/carrinhoCompras',CarrinhoComprasControllers.delete);
 
 routes.post('/historicoMovimentacao', HistoricoMovimentacaoControllers.create);

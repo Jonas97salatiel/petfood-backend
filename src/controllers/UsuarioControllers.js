@@ -28,7 +28,7 @@ module.exports = {
 
         console.log(userEmail.length);
 
-        if( userEmail.length === 1 ){
+        if( userEmail.length > 0 ){
 
             return res.status(409).json({ warning: 'E-mail já está sendo utilizado!.'});
             
@@ -50,7 +50,7 @@ module.exports = {
                 });
 
                   console.log(req.body);
-                  return res.status(200).json({ success: 'Usuario criado com sucesso!.', 
+                  return res.status(200).json({ success: 'Usuario criado com sucesso!', 
                                                 auth: true, 
                                                 token: token});
               } catch (error) {
@@ -72,8 +72,8 @@ module.exports = {
             console.log(error);
             next(error);
         } 
-
     }
+
 },
 
     async alterUser(req, res, next){

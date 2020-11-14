@@ -5,18 +5,13 @@ exports.up = function(knex) {
         table.increments('idCarrinhoCompras').primary();
         table.string('descricao', 50);
         
-
-
         //relacionamento
         table.integer('idProduto')
-            .references('produto.idProduto')
+            .references('produtos.idProduto')
             .notNullable()
             .onDelete('CASCADE')
 
-
         table.timestamps(true, true);
-
-        
 
     })
   
