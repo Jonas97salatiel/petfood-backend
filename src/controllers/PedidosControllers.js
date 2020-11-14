@@ -4,9 +4,12 @@ module.exports = {
 
     async index(req, res, next){
 
+        const idParceiro = req.params;
+
         try {
             
-            const results = await knex('pedidos');
+            const results = await knex('pedidos').where({idParceiro});
+
             return res.json(results);
 
         } catch (error) {
@@ -16,23 +19,21 @@ module.exports = {
 
     async create(req, res, next){
 
-        const {valorPedido, status, numeroTransacao, idCliente, idFormaPagamento, idCuponsDesconto} = req.body;
-        console.log(req.body);
+        const {valorPedido, status, numeroTransacao, idCliente, idFormaPagamento, idCuponsDesconto, idParceiro} = req.body;
 
         let listaProdutos = req.body.ListaProdutos;
 
-        console.log(listaProdutos);
-
        try {
             
-            const {idPedidos} = await knex('pedidos').insert({
+            await knex('pedidos').insert({
                 
                 valorPedido: valorPedido,
                 status: status,
                 numeroTransacao: numeroTransacao,
                 idCliente: idCliente,
                 idFormaPagamento: idFormaPagamento,
-                idCuponsDesconto: idCuponsDesconto
+                idCuponsDesconto: idCuponsDesconto,
+                idParceiro: idParceiro
 
              });
             
