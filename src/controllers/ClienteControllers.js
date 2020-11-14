@@ -1,5 +1,5 @@
 const knex = require('../database/index');
-
+const imageProduto = require('../controllers/ImageControllers');
 
 module.exports = {
 
@@ -29,17 +29,24 @@ module.exports = {
 
     async create(req, res, next) {
 
-        const { idUsuario, cpf } = req.body;
+        const { userId, cpf, imagem } = req.body;
 
         console.log(req.body);
 
         try {
             await knex('cliente').insert({
-                idUsuario: idUsuario,
-                cpf: cpf
+                userId: userId,
+                cpf: cpf,
+                urlImage: 'null'
             });
+        
+        const urlImage =  await imageProduto.uploadImageCliente(imagem, userId);
+        
+        await knex('cliente')
+            .where({ userId })
+            .update({ urlImage:  urlImage});
 
-            return res.json(200) + console.log("Objeto cadastrado");
+            return res.status(200).json({ success: 'Cliente com sucesso.' });
 
         } catch (error) {
             console.log(error);
@@ -51,13 +58,13 @@ module.exports = {
 
         try {
 
-            const {idUsuario}=req.params
-            console.log(idUsuario)
+            const {userId}=req.params
+            console.log(userId)
 
             const { cpf } = req.body;
             console.log(req.body)
 
-            await knex('clientes').update({ cpf }).where({ idUsuario });
+            await knex('clientes').update({ cpf }).where({ userId });
 
             return res.status(200).json({ success: 'Cadastro atualizado com sucesso.' });
 

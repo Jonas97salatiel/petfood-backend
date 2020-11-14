@@ -52,6 +52,7 @@ module.exports = {
                                         descricaoProduto: descricaoProduto,
                                         idParceiro: idParceiro
                                     })
+                                    
             const idProduto = result[0].idProduto;
     
           const urlImage =  await imageProduto.uploadImageProduto(imagem, idProduto);
