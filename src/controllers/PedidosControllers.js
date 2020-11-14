@@ -4,13 +4,17 @@ module.exports = {
 
     async index(req, res, next){
 
-        const idParceiro = req.params;
-
+        const idParceiro = req.params.idParceiro;
+        
         try {
             
             const results = await knex('pedidos').where({idParceiro});
 
-            return res.json(results);
+            if (results.length = 0) {
+                return res.status(200).json({ });
+            } else {
+                return res.json(results);
+            }       
 
         } catch (error) {
             console.log(error);
