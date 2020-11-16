@@ -21,14 +21,15 @@ module.exports = {
     },
 
     async indexEmail(req, res){
-        
+
         const email = req.params.email;
+        console.log(email)
         try {
 
             const results = await knex
                                     .select('id')
                                     .from('usuarios')
-                                    .where(email);
+                                    .where('email',email);
 
             return res.json(results);
 
