@@ -57,7 +57,7 @@ module.exports  = {
         return url = fileUrl;
 
     },
-    async uploadImageCliente(blob, idCliente, url){
+    async uploadImageCliente(imagem, idCliente, url){
 
         try {
 
@@ -65,14 +65,14 @@ module.exports  = {
 
             let filename = 'cliente' + idCliente + '.jpg';
     
-            //let matches = imagem.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
+            let matches = imagem.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
     
-            //let type = matches[1];
+            let type = matches[1];
     
             // Obtém a imagem em si
-            // let buffer = new Buffer.from(imagem);
+            let buffer = new Buffer.from(matches[2], 'base64');
             
-            await blobSvc.createBlockBlobFromText('imagens', filename, blob, {
+            await blobSvc.createBlockBlobFromText('imagens', filename, buffer, {
                 contentType: type
             }, function (error, result, response) {
                 if (error) {
@@ -87,7 +87,7 @@ module.exports  = {
 
             
         } catch (e) {
-            console.log(e);
+            console.log(e)
         }
 
 
