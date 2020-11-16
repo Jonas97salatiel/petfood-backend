@@ -41,13 +41,13 @@ module.exports = {
                 urlImage: 'null'
             });
 
-        if(!imageBase64 === null){
+    
             const urlImage =  await imageProduto.uploadImageCliente(imageBase64, userId);
         
             await knex('clientes')
                 .where({ userId })
                 .update({ urlImage:  urlImage});    
-        }
+        
         
 
             return res.status(200).json({ success: 'Cliente cadastrado com sucesso.' });
