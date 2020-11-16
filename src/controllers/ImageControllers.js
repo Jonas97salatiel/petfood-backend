@@ -57,7 +57,7 @@ module.exports  = {
         return url = fileUrl;
 
     },
-    async uploadImageCliente(imagem, idCliente, url){
+    async uploadImageCliente(blob, idCliente, url){
 
         try {
 
@@ -72,7 +72,7 @@ module.exports  = {
             // Obtém a imagem em si
             // let buffer = new Buffer.from(imagem);
             
-            await blobSvc.createBlockBlobFromText('imagens', filename, imagem, {
+            await blobSvc.createBlockBlobFromText('imagens', filename, blob, {
                 contentType: type
             }, function (error, result, response) {
                 if (error) {
