@@ -40,12 +40,14 @@ module.exports = {
                 nome: nome,
                 urlImage: 'null'
             });
+        if(urlImage !== null){
+            const urlImage =  await imageProduto.uploadImageCliente(imagem, userId);
         
-        const urlImage =  await imageProduto.uploadImageCliente(imagem, userId);
+            await knex('clientes')
+                .where({ userId })
+                .update({ urlImage:  urlImage});    
+        }
         
-        await knex('clientes')
-            .where({ userId })
-            .update({ urlImage:  urlImage});
 
             return res.status(200).json({ success: 'Cliente com sucesso.' });
 
