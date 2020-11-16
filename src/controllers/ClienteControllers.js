@@ -29,7 +29,7 @@ module.exports = {
 
     async create(req, res, next) {
 
-        const { userId, cpf, imagem } = req.body;
+        const { userId, cpf, nome, imagem } = req.body;
 
         console.log(req.body);
 
@@ -37,6 +37,7 @@ module.exports = {
             await knex('clientes').insert({
                 userId: userId,
                 cpf: cpf,
+                nome: nome,
                 urlImage: 'null'
             });
         
