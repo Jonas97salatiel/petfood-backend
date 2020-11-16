@@ -6,7 +6,7 @@ module.exports = {
     async index(req, res) {
 
         try {
-            const results = await knex('cliente');
+            const results = await knex('clientes');
             return res.json(results);
         } catch (error) {
             next(error);
@@ -19,7 +19,7 @@ module.exports = {
         const {idUsuario}=req.params
 
         try {
-            const results = await knex('cliente').where({idUsuario});
+            const results = await knex('clientes').where({idUsuario});
             return res.json(results);
         } catch (error) {
             next(error);
@@ -34,7 +34,7 @@ module.exports = {
         console.log(req.body);
 
         try {
-            await knex('cliente').insert({
+            await knex('clientes').insert({
                 userId: userId,
                 cpf: cpf,
                 urlImage: 'null'
@@ -42,7 +42,7 @@ module.exports = {
         
         const urlImage =  await imageProduto.uploadImageCliente(imagem, userId);
         
-        await knex('cliente')
+        await knex('clientes')
             .where({ userId })
             .update({ urlImage:  urlImage});
 
