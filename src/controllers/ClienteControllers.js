@@ -41,7 +41,7 @@ module.exports = {
                 urlImage: 'null'
             });
 
-        if(imageBase64 !== null){
+        if(!imageBase64 === null){
             const urlImage =  await imageProduto.uploadImageCliente(imageBase64, userId);
         
             await knex('clientes')
@@ -50,7 +50,7 @@ module.exports = {
         }
         
 
-            return res.status(200).json({ success: 'Cliente com sucesso.' });
+            return res.status(200).json({ success: 'Cliente cadastrado com sucesso.' });
 
         } catch (error) {
             console.log(error);
