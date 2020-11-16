@@ -59,28 +59,38 @@ module.exports  = {
     },
     async uploadImageCliente(imagem, idCliente, url){
 
-        const blobSvc = azure.createBlobService(process.env.ACCESS_KEY_AZURE);
+        try {
 
-        let filename = 'cliente' + idCliente + '.jpg';
+            const blobSvc = azure.createBlobService(process.env.ACCESS_KEY_AZURE);
 
-        let matches = imagem.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
+            let filename = 'cliente' + idCliente + '.jpg';
+    
+            let matches = imagem.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
+    
+            let type = matches[1];
+    
+            // Obtém a imagem em si
+            let buffer = new Buffer.from(matches[2], 'base64');
+            
+            await blobSvc.createBlockBlobFromText('imagens', filename, buffer, {
+                contentType: type
+            }, function (error, result, response) {
+                if (error) {
+                    console.log(error)
+                    filename = 'default.png'
+                }
+            });
+    
+            const fileUrl = `https://petfood.blob.core.windows.net/imagens/${filename}`;
+            
+            return url = fileUrl;
 
-        let type = matches[1];
+            
+        } catch (e) {
+            console.log(e);
+        }
 
-        // Obtém a imagem em si
-        let buffer = new Buffer.from(matches[2], 'base64');
-        
-        await blobSvc.createBlockBlobFromText('imagens', filename, buffer, {
-            contentType: type
-        }, function (error, result, response) {
-            if (error) {
-                filename = 'default.png'
-            }
-        });
 
-        const fileUrl = `https://petfood.blob.core.windows.net/imagens/${filename}`;
-        
-        return url = fileUrl;
 
     }
 
