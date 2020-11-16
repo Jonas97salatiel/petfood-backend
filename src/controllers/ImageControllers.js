@@ -70,9 +70,9 @@ module.exports  = {
             //let type = matches[1];
     
             // Obtém a imagem em si
-            let buffer = new Buffer.from(imagem);
+            // let buffer = new Buffer.from(imagem);
             
-            await blobSvc.createBlockBlobFromText('imagens', filename, buffer, {
+            await blobSvc.createBlockBlobFromText('imagens', filename, imagem, {
                 contentType: type
             }, function (error, result, response) {
                 if (error) {
