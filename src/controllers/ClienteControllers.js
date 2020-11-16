@@ -16,7 +16,7 @@ module.exports = {
 
     async indexCliente(req, res) {
 
-        const {userId}=req.params
+        const {userId}=req.params.userId
 
         try {
             const results = await knex('clientes').where({userId});

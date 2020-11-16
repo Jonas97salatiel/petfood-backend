@@ -47,7 +47,8 @@ routes.get('/pedido/:idParceiro', PedidosControllers.index);
 
 routes.post('/clientes', ClienteControllers.create);
 routes.put('/clientes', ClienteControllers.alterCliente);
-routes.get('/clientes', ClienteControllers.indexCliente);
+routes.get('/clientes/:userId', ClienteControllers.indexCliente);
+routes.get('/clientes', ClienteControllers.index);
 
 routes.post('/marca', MarcaControllers.create);
 routes.put('/marca/:idMarca', MarcaControllers.alterMarca);
