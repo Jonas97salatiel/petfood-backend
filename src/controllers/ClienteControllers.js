@@ -29,7 +29,7 @@ module.exports = {
 
     async create(req, res, next) {
 
-        const { userId, cpf, nome, imagem } = req.body;
+        const { userId, cpf, nome, imageBase64 } = req.body;
 
         console.log(req.body);
 
@@ -40,8 +40,9 @@ module.exports = {
                 nome: nome,
                 urlImage: 'null'
             });
-        if(urlImage !== null){
-            const urlImage =  await imageProduto.uploadImageCliente(imagem, userId);
+
+        if(imageBase64 !== null){
+            const urlImage =  await imageProduto.uploadImageCliente(imageBase64, userId);
         
             await knex('clientes')
                 .where({ userId })
