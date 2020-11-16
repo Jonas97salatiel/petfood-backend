@@ -20,6 +20,23 @@ module.exports = {
         }
     },
 
+    async indexEmail(req, res){
+        
+        const email = req.params.email;
+        try {
+
+            const results = await knex
+                                    .select('id')
+                                    .from('usuarios')
+                                    .where(email);
+
+            return res.json(results);
+
+        } catch (error) {
+            console.log(error);
+        }
+    },
+
 
     async create(req, res, next){
         const { nome, email, senha, telefone } = req.body;
