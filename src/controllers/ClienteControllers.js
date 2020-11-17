@@ -16,10 +16,10 @@ module.exports = {
 
     async indexCliente(req, res) {
 
-        const {idUsuario}=req.params
+        const {idCliente}=req.params
 
         try {
-            const results = await knex('cliente').where({idUsuario});
+            const results = await knex('cliente').where({idCliente});
             return res.json(results);
         } catch (error) {
             next(error);
