@@ -46,7 +46,7 @@ routes.delete('/parceiro/:idParceiro',ParceiroControllers.delete);
 routes.post('/produto', ProdutoControllers.create );
 routes.get('/produto',ProdutoControllers.index);
 routes.put('/produto/:idProduto',ProdutoControllers.alterProduto);
-routes.delete('/produto/:idProduto',ProdutoControllers.delete);
+routes.delete('/produto/:idProdu to',ProdutoControllers.delete);
 
 routes.post('/pedido', PedidosControllers.create);
 routes.get('/pedido/:idParceiro', PedidosControllers.index);
