@@ -24,7 +24,7 @@ routes.get('/usuarios', UsuarioController.index);
 routes.post('/usuarios', UsuarioController.create);
 routes.put('/usuarios/:id', authMiddleware,UsuarioController.alterUser);
 routes.delete('/usuarios/:id', UsuarioController.delete);
-routes.get('/usuariosLogin' ,UsuarioController.login);
+routes.post('/usuariosLogin' ,UsuarioController.login);
 routes.post('/usuarios/logout', UsuarioController.logout);
 routes.get('/usuarios/:email', UsuarioController.indexEmail);
 
