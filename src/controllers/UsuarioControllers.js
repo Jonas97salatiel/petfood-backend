@@ -136,7 +136,7 @@ module.exports = {
             
             const { email, senha} = req.body;
             console.log(req.body);
-            
+
             let userEmail = await knex('usuarios').where({email}).select('email');
             let crptSenha = await cryptography.criptografar(senha);
             let userSenha = await knex('usuarios').where({email}).select('senha');
@@ -150,11 +150,10 @@ module.exports = {
 
                 let token = jwt.sign({ id }, process.env.SECRET, {
                     expiresIn: 1500
-
                 }); 
 
                 return res.status(200).json({ 
-                    id,
+                    id: id[0],
                     success: 'Login autenticado', 
                     auth: true, 
                     token: token
