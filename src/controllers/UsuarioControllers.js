@@ -153,7 +153,7 @@ module.exports = {
                 }); 
 
                 return res.status(200).json({ 
-                    id: id[0],
+                    id: id[0].id ,
                     success: 'Login autenticado', 
                     auth: true, 
                     token: token
