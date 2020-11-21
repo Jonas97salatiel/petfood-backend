@@ -36,7 +36,8 @@ routes.delete('/enderecos/:id_endereco', EnderecoUsuariosControllers.delete);
 routes.post('/produto', ProdutosControllers.create );
 routes.get('/produto', ProdutosControllers.index );
 routes.put('/produto/:idProduto', ProdutosControllers.alterProduto);
-routes.put('/produto/:idProduto', ProdutosControllers.delete);
+routes.delete('/produto/:idProduto', ProdutosControllers.delete);
+routes.get('/produto/:idProduto', ProdutoControllers.consultaProduto);
 
 routes.post('/parceiro', ParceiroControllers.create );
 routes.get('/parceiro',ParceiroControllers.index);

@@ -17,21 +17,21 @@ module.exports = {
     async create(req, res, next) {
 
         //const idParceiro = req.headers.idParceiro;
-        const { descricaoProduto, 
-                valor, 
-                qtdEstoque, 
-                medida,
-                peso, 
-                status, 
-                idMarca,
-                idEspecie,
-                idCategoria,
-                idParceiro,
-                imagem 
-             } = req.body;
+        const { descricaoProduto,
+            valor,
+            qtdEstoque,
+            medida,
+            peso,
+            status,
+            idMarca,
+            idEspecie,
+            idCategoria,
+            idParceiro,
+            imagem
+        } = req.body;
 
         try {
-             await knex('produtos').insert({
+            await knex('produtos').insert({
                 descricaoProduto: descricaoProduto,
                 valor: valor,
                 quantidade: qtdEstoque,
@@ -40,27 +40,28 @@ module.exports = {
                 status: status,
                 idMarca: idMarca,
                 idEspecie: idEspecie,
-                idCategoria:idCategoria,
+                idCategoria: idCategoria,
                 idParceiro: idParceiro,
                 urlImage: 'null'
             });
 
             const result = await knex('produtos')
-                                    .select('idProduto')
-                                    .where({  
-                                        descricaoProduto: descricaoProduto,
-                                        idParceiro: idParceiro
-                                    })
-                                    
-            const idProduto = result[0].idProduto;
-    
-          const urlImage =  await imageProduto.uploadImageProduto(imagem, idProduto);
+                .select('idProduto')
+                .where({
+                    descricaoProduto: descricaoProduto,
+                    idParceiro: idParceiro
+                })
 
-          await knex('produtos')
-                    .where({ 
-                        idProduto,
-                        idParceiro })
-                    .update({ urlImage:  urlImage});
+            const idProduto = result[0].idProduto;
+
+            const urlImage = await imageProduto.uploadImageProduto(imagem, idProduto);
+
+            await knex('produtos')
+                .where({
+                    idProduto,
+                    idParceiro
+                })
+                .update({ urlImage: urlImage });
 
             return res.json(200) + console.log(`Produto cadastrado com sucesso${idProduto}. Url da imagem ${urlImage}`);
 
@@ -75,26 +76,26 @@ module.exports = {
         try {
 
             const { idProduto } = req.params;
-            
-            const { descricaoProduto, valor, qtdEstoque, medida,peso, status,idMarca,idEspecie,idCategoria,idParceiro, imagem } = req.body;
 
-            const urlImage =  await imageProduto.uploadImageProduto(imagem, idProduto);
+            const { descricaoProduto, valor, qtdEstoque, medida, peso, status, idMarca, idEspecie, idCategoria, idParceiro, imagem } = req.body;
+
+            const urlImage = await imageProduto.uploadImageProduto(imagem, idProduto);
 
             const produtos = await knex('produtos')
-                    .update({ 
-                            descricaoProduto: descricaoProduto,
-                            valor: valor,
-                            quantidade: qtdEstoque,
-                            unidadeMedida: medida,
-                            peso: peso,
-                            status: status,
-                            idMarca: idMarca,
-                            idEspecie: idEspecie,
-                            idCategoria: idCategoria,
-                            urlImage: urlImage
-                    })
-                     .where({idParceiro});
-         
+                .update({
+                    descricaoProduto: descricaoProduto,
+                    valor: valor,
+                    quantidade: qtdEstoque,
+                    unidadeMedida: medida,
+                    peso: peso,
+                    status: status,
+                    idMarca: idMarca,
+                    idEspecie: idEspecie,
+                    idCategoria: idCategoria,
+                    urlImage: urlImage
+                })
+                .where({ idParceiro });
+
             return res.status(200).json({ success: 'Cadastro atualizado com sucesso.', produtos });
 
         } catch (error) {
@@ -117,6 +118,23 @@ module.exports = {
         } catch (error) {
             next(error)
         }
-    }
+    },
+
+    async consultaProduto(req, res, next) {
+
+        try {
+
+            const { idProduto } = req.params
+
+            const results  = await knex('produtos')
+                .where({ idProduto });
+
+            return res.status(200).json(results);
+
+        } catch (error) {
+            next(error)
+        }
+
+    },
 
 }
