@@ -126,8 +126,11 @@ module.exports = {
 
             const { idProduto } = req.params
 
-            const results  = await knex('produtos')
-                .where({ idProduto });
+            const results = await knex('produtos')
+                .join('parceiro', 'produtos.idParceiro', '=', 'parceiro.idParceiro')
+                .where({idProduto});
+
+            //.where({ idProduto });
 
             return res.status(200).json(results);
 
