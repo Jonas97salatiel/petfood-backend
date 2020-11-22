@@ -23,6 +23,7 @@ module.exports = {
             medida,
             peso,
             status,
+            nome,
             idMarca,
             idEspecie,
             idCategoria,
@@ -38,6 +39,7 @@ module.exports = {
                 unidadeMedida: medida,
                 peso: peso,
                 status: status,
+                nome: nome,
                 idMarca: idMarca,
                 idEspecie: idEspecie,
                 idCategoria: idCategoria,
@@ -77,7 +79,7 @@ module.exports = {
 
             const { idProduto } = req.params;
 
-            const { descricaoProduto, valor, qtdEstoque, medida, peso, status, idMarca, idEspecie, idCategoria, idParceiro, imagem } = req.body;
+            const { descricaoProduto, valor, qtdEstoque, medida, peso, status, nome, idMarca, idEspecie, idCategoria, idParceiro, imagem } = req.body;
 
             const urlImage = await imageProduto.uploadImageProduto(imagem, idProduto);
 
@@ -89,6 +91,7 @@ module.exports = {
                     unidadeMedida: medida,
                     peso: peso,
                     status: status,
+                    nome: nome,
                     idMarca: idMarca,
                     idEspecie: idEspecie,
                     idCategoria: idCategoria,
