@@ -128,6 +128,7 @@ module.exports = {
 
             const results = await knex('produtos')
                 .join('parceiro', 'produtos.idParceiro', '=', 'parceiro.idParceiro')
+                .join('marca', 'produtos.idMarca', '=', 'marca.idMarca')
                 .where({idProduto});
 
             //.where({ idProduto });
