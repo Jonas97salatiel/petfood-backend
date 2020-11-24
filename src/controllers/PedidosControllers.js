@@ -50,7 +50,7 @@ module.exports = {
                 const {idProduto, qtd} = listaProdutos[index];
 
                 await knex('pedidos_produtos').insert({
-                    qtd: qtd,
+                    quantidade: qtd,
                     idPedidos: idPedidos,
                     idProduto:idProduto
                 })
