@@ -28,7 +28,7 @@ routes.post('/usuariosLogin' ,UsuarioController.login);
 routes.post('/usuarios/logout', UsuarioController.logout);
 routes.get('/usuarios/:email', UsuarioController.indexEmail);
 
-routes.post('/enderecos/:userId', EnderecoUsuariosControllers.create);
+routes.post('/enderecos', EnderecoUsuariosControllers.create);
 routes.get('/enderecos/:userId', EnderecoUsuariosControllers.indexUser);
 routes.get('/enderecos', EnderecoUsuariosControllers.index);
 routes.put('/enderecos/:id_endereco', EnderecoUsuariosControllers.alterEndereco);
