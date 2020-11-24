@@ -6,8 +6,10 @@ module.exports = {
     async index(req, res) {
 
         try {
-            const results = await knex('produtos');
-            return res.json(results);
+            const results = await knex('produtos')
+                .join('parceiro', 'produtos.idParceiro', '=', 'parceiro.idParceiro');
+            return res.json(results)
+
         } catch (error) {
             next(error);
         }
@@ -132,7 +134,7 @@ module.exports = {
             const results = await knex('produtos')
                 .join('parceiro', 'produtos.idParceiro', '=', 'parceiro.idParceiro')
                 .join('marca', 'produtos.idMarca', '=', 'marca.idMarca')
-                .where({idProduto});
+                .where({ idProduto });
 
             //.where({ idProduto });
 
