@@ -29,6 +29,9 @@ module.exports = {
 
         let listaProdutos = req.body.ListaProdutos;
 
+        console.log(req.body);
+        console.log(listaProdutos);
+
        try {
             
             await knex('pedidos').insert({
