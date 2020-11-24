@@ -19,7 +19,7 @@ module.exports = {
 
         try {
             const results = await knex('enderecos').where({userId: userId});
-            return res.json(results);            
+            return res.json(results[0]);            
         } catch (error) {
             console.log(error)
         }
