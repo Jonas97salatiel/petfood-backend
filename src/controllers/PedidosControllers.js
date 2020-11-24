@@ -54,7 +54,7 @@ module.exports = {
 
                 await knex('pedidos_produtos').insert({
                     quantidade: qtd,
-                    idPedidos: idPedidos.idPedidos,
+                    idPedidos: idPedidos[0].idPedidos,
                     idProduto:idProduto
                 })
 
