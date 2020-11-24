@@ -17,7 +17,7 @@ module.exports = {
             } else {
                 return res.json(results);
             }       
-
+  
         } catch (error) {
             console.log(error);
         }
@@ -42,6 +42,8 @@ module.exports = {
                 idParceiro: idParceiro
 
              });
+
+             const idPedidos = await knex('pedidos').where({numeroTransacao: numeroTransacao});
             
              for (let index = 0; index < listaProdutos.length;) {
                  
