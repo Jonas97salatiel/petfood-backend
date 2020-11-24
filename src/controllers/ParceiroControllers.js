@@ -14,6 +14,19 @@ module.exports = {
 
     },
 
+    async indexParceiro(req, res) {
+
+        const cnpj = req.params.cnpj
+
+        try {
+            const results = await knex('parceiro').where({cnpj});
+            return res.json(results);
+        } catch (error) {
+            next(error);
+        }
+
+    },
+
 
     async create(req, res, next) {
         //const userId = req.headers.userId;
