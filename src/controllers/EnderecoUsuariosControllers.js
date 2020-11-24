@@ -16,9 +16,9 @@ module.exports = {
 
     async indexUser(req, res){
         const userId = req.headers.userId;
-        
+
         try {
-            const results = await knex('enderecos').where({userId});
+            const results = await knex('enderecos').where({userId: userId});
             return res.json(results);            
         } catch (error) {
             console.log(error)
