@@ -47,7 +47,7 @@ module.exports = {
              });
 
              const idPedidos = await knex('pedidos').where({numeroTransacao: numeroTransacao}).select('idPedidos');
-            
+            console.log(idPedidos);
              for (let index = 0; index < listaProdutos.length;) {
                  
                 const {idProduto, qtd} = listaProdutos[index];
