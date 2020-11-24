@@ -46,7 +46,7 @@ module.exports = {
 
              });
 
-             const idPedidos = await knex('pedidos').where({numeroTransacao: numeroTransacao});
+             const idPedidos = await knex('pedidos').where({numeroTransacao: numeroTransacao}).select('idPedidos');
             
              for (let index = 0; index < listaProdutos.length;) {
                  
