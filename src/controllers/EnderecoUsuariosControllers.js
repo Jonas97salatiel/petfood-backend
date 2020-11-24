@@ -14,6 +14,18 @@ module.exports = {
 
     },
 
+    async indexUser(req, res){
+        const userId = req.headers.userId;
+        
+        try {
+            const results = await knex('enderecos').where({userId});
+            return res.json(results);            
+        } catch (error) {
+            console.log(error)
+        }
+
+    },
+
     async create(req, res, next){
 
        // const userId = req.headers.userId;

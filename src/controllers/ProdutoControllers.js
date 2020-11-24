@@ -97,7 +97,7 @@ module.exports = {
                     idCategoria: idCategoria,
                     urlImage: urlImage
                 })
-                .where({ idParceiro });
+                .where({ idProduto });
 
             return res.status(200).json({ success: 'Cadastro atualizado com sucesso.', produtos });
 
