@@ -16,6 +16,23 @@ module.exports = {
 
     },
 
+    async indexProdutosParceiro(req, res) {
+
+        const { idParceiro } = req.params;
+
+        try {
+            const results = await knex('produtos')
+                .join('parceiro', 'produtos.idParceiro', '=', 'parceiro.idParceiro')
+                .where({idParceiro});
+
+            return res.status(200).json(results)
+            
+        } catch (error) {
+            next(error);
+        }
+
+    },
+
     async create(req, res, next) {
 
         //const idParceiro = req.headers.idParceiro;
