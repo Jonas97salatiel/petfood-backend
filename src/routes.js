@@ -31,8 +31,8 @@ routes.get('/usuarios/:email', UsuarioController.indexEmail);
 routes.post('/enderecos', EnderecoUsuariosControllers.create);
 routes.get('/enderecos/:userId', EnderecoUsuariosControllers.indexUser);
 routes.get('/enderecos', EnderecoUsuariosControllers.index);
-routes.put('/enderecos/:id_endereco', EnderecoUsuariosControllers.alterEndereco);
-routes.delete('/enderecos/:id_endereco', EnderecoUsuariosControllers.delete);
+routes.put('/enderecos/:idEndereco', EnderecoUsuariosControllers.alterEndereco);
+routes.delete('/enderecos/:idEndereco', EnderecoUsuariosControllers.delete);
 
 routes.post('/produto', ProdutosControllers.create );
 routes.get('/produto', ProdutosControllers.index );
