@@ -6,7 +6,8 @@ module.exports = {
     async index(req, res) {
 
         try {
-            const results = await knex('parceiro');
+            const results = await knex('parceiro')
+                .join('enderecos', 'parceiro.userId', '=', 'enderecos.userId' );
             return res.json(results);
         } catch (error) {
             next(error);

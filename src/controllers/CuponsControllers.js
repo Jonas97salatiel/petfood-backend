@@ -21,7 +21,6 @@ module.exports = {
         //const userId = req.headers.userId;
         const { descCupom, dataValidade, status, valor, tipoCupom } = req.body;
 
-
         console.log(req.body);
 
         try {
