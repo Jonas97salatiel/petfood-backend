@@ -37,7 +37,7 @@ module.exports = {
             } else {
 
                 const results = await knex('produtos')
-                    .where({ idParceiro }, 'nome', 'like', `%${query}%`);
+                    .where('nome', 'like', `%${query}%`);
                 return res.json(results);
 
             }
