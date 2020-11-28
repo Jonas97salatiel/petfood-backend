@@ -39,8 +39,8 @@ routes.get('/produto', ProdutosControllers.index );
 routes.put('/produto/:idProduto', ProdutosControllers.alterProduto);
 routes.delete('/produto/:idProduto', ProdutosControllers.delete);
 routes.get('/produto/:idProduto', ProdutoControllers.consultaProduto);
-routes.post('/produto/parceiro/:idParceiro', ProdutoControllers.indexProdutosParceiro);
-
+routes.get('/produto/parceiro/:idParceiro', ProdutoControllers.indexProdutosParceiro);
+ 
 routes.post('/parceiro', ParceiroControllers.create );
 routes.get('/parceiro',ParceiroControllers.index);
 routes.get('/parceiro/:cnpj',ParceiroControllers.indexParceiro);

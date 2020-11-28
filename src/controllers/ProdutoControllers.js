@@ -20,27 +20,12 @@ module.exports = {
 
         const { idParceiro } = req.params;
 
-        const { query } = req.body;
-
-        console.log(idParceiro);
-
-        console.log(query);
-
         try {
+            const results = await knex('produtos')
 
-            if (query === '0') {
+                .where({idParceiro});
 
-                const results = await knex('produtos')
-                    .where({ idParceiro });
-                return res.json(results);
-
-            } else {
-
-                const results = await knex('produtos')
-                    .where('nome', 'like', `%${query}%`);
-                return res.json(results);
-
-            }
+            return res.json(results)
 
         } catch (error) {
             console.log(error)
