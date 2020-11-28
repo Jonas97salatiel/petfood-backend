@@ -25,8 +25,8 @@ module.exports = {
                 .join('parceiro', 'produtos.idParceiro', '=', 'parceiro.idParceiro')
                 .where({idParceiro});
 
-            return res.status(200).json(results)
-            
+            return res.json(results)
+
         } catch (error) {
             next(error);
         }
