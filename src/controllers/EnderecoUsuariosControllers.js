@@ -97,7 +97,7 @@ module.exports = {
 
                     return res.send()
                 }catch(error){
-                    next(error)
+                    console.log(error);
                 }
     }
 }
