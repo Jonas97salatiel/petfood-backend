@@ -92,7 +92,7 @@ module.exports = {
                     const {idEndereco}=req.params
 
                     await knex('enderecos')
-                    .where({idEndereco})
+                    .where({idEndereco: idEndereco})
                     .del()
 
                     return res.send()
