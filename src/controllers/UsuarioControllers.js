@@ -20,7 +20,7 @@ module.exports = {
         }
     },
 
-    async indexEmail(req, res){
+    async indexEmail(req, res, next){
 
         const email = req.params.email;
         console.log(email)
@@ -35,6 +35,7 @@ module.exports = {
 
         } catch (error) {
             console.log(error);
+            next(error);
         }
     },
 
