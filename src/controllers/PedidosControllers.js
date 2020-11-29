@@ -63,7 +63,7 @@ module.exports = {
                 index++
             }
 
-            pagarme.client.connect({ api_key: 'ak_test_82qgXOppwHF79yNxfhXHTIty2rMqcE' })
+            await pagarme.client.connect({ api_key: 'ak_test_82qgXOppwHF79yNxfhXHTIty2rMqcE' })
                 .then(client => client.transactions.create({
                     amount: 1000,
                     card_number: '4111111111111111',
