@@ -12,6 +12,7 @@
     "jsonwebtoken": "^8.5.1",
     "knex": "^0.21.6",
     "nodemon": "^2.0.4",
+    "pagarme": "^4.13.0",
     "pg": "^8.3.3"
   },
   "devDependencies": {},

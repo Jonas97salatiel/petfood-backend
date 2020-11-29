@@ -7,8 +7,9 @@ module.exports = {
 
         try {
             const results = await knex('produtos')
-                .join('parceiro', 'produtos.idParceiro', '=', 'parceiro.idParceiro');
-            return res.json(results)
+                .join('parceiro', 'produtos.idParceiro', '=', 'parceiro.idParceiro') ;
+           
+                return res.json(results)
 
         } catch (error) {
             next(error);
