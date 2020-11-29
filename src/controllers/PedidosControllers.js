@@ -78,8 +78,9 @@ module.exports = {
                 .then(client => client.security.encrypt(card))
                 .then(card_hash => console.log(card_hash))
 
-            const params = {
-                    "amount": "21000",
+            const pagarmeTransaction = await pagarme.client.transactions.create({
+
+                "amount": "21000",
                     "card_number": "4111111111111111",
                     "card_cvv": "123",
                     "card_expiration_date": "1225",
@@ -142,9 +143,7 @@ module.exports = {
                         "tangible": true
                       }
                     ]
-                }
-
-            const pagarmeTransaction = await pagarme.client.transactions.create(params);
+            });
 
             console.log(pagarmeTransaction);
 
