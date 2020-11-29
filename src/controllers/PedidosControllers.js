@@ -33,35 +33,35 @@ module.exports = {
         console.log(req.body);
         console.log(listaProdutos);
 
-        try {
+         try {
 
-            await knex('pedidos').insert({
+        //     await knex('pedidos').insert({
 
-                valorPedido: valorPedido,
-                status: status,
-                numeroTransacao: numeroTransacao,
-                idCliente: idCliente,
-                idFormaPagamento: idFormaPagamento,
-                idCuponsDesconto: idCuponsDesconto,
-                idParceiro: idParceiro
+        //         valorPedido: valorPedido,
+        //         status: status,
+        //         numeroTransacao: numeroTransacao,
+        //         idCliente: idCliente,
+        //         idFormaPagamento: idFormaPagamento,
+        //         idCuponsDesconto: idCuponsDesconto,
+        //         idParceiro: idParceiro
 
-            });
+        //     });
 
-            const idPedidos = await knex('pedidos').where({ numeroTransacao: numeroTransacao }).select('idPedidos');
-            console.log(idPedidos);
+        //     const idPedidos = await knex('pedidos').where({ numeroTransacao: numeroTransacao }).select('idPedidos');
+        //     console.log(idPedidos);
             
-            for (let index = 0; index < listaProdutos.length;) {
+        //     for (let index = 0; index < listaProdutos.length;) {
 
-                const { idProduto, qtd } = listaProdutos[index];
+        //         const { idProduto, qtd } = listaProdutos[index];
 
-                await knex('pedidos_produtos').insert({
-                    quantidade: qtd,
-                    idPedidos: idPedidos[0].idPedidos,
-                    idProduto: idProduto
-                })
+        //         await knex('pedidos_produtos').insert({
+        //             quantidade: qtd,
+        //             idPedidos: idPedidos[0].idPedidos,
+        //             idProduto: idProduto
+        //         })
 
-                index++
-            }
+        //         index++
+        //     }
 
             // pagarme.client.connect({ api_key: 'ak_test_82qgXOppwHF79yNxfhXHTIty2rMqcE' })
             //     .then(client => client.transactions.create({
