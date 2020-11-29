@@ -115,7 +115,7 @@ module.exports = {
                       "name": "Neo Reeves",
                       "fee": "1000",
                       "delivery_date": "2000-12-21",
-                      "expedited": True,
+                      "expedited": true,
                       "address": {
                         "country": "br",
                         "state": "sp",
@@ -132,14 +132,14 @@ module.exports = {
                         "title": "Red pill",
                         "unit_price": "10000",
                         "quantity": "1",
-                        "tangible": True
+                        "tangible": true
                       },
                       {
                         "id": "b123",
                         "title": "Blue pill",
                         "unit_price": "10000",
                         "quantity": "1",
-                        "tangible": True
+                        "tangible": true
                       }
                     ]
                 }
@@ -147,7 +147,7 @@ module.exports = {
             const pagarmeTransaction = await pagarme.client.transactions.create(params);
 
             console.log(pagarmeTransaction);
-            
+
             return res.status(200).json({ success: 'Pedido cadastrado com sucesso!' })
 
         } catch (error) {
