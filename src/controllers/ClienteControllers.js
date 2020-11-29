@@ -14,7 +14,7 @@ module.exports = {
 
     },
 
-    async indexCliente(req, res) {
+    async indexCliente(req, res, next) {
 
         const {userId}=req.params.userId
 
