@@ -19,7 +19,8 @@ module.exports = {
         const {userId}=req.params.userId
 
         try {
-            const results = await knex('clientes').where({userId});
+            const results = await knex('clientes').where({userId})
+            .join('enderecos', 'clientes.userId', '=', 'enderecos.userId');
             return res.json(results);
         } catch (error) {
             next(error);

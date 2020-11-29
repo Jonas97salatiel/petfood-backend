@@ -27,7 +27,13 @@ module.exports = {
 
     async create(req, res, next) {
 
-        const { valorPedido, status, numeroTransacao, idCliente, idFormaPagamento, idCuponsDesconto, idParceiro } = req.body;
+        const { valorPedido, 
+                status, 
+                numeroTransacao, 
+                idCliente, 
+                idFormaPagamento, 
+                idCuponsDesconto, 
+                idParceiro } = req.body;
 
         let listaProdutos = req.body.ListaProdutos;
 
