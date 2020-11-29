@@ -23,6 +23,7 @@ module.exports = {
             .join('enderecos', 'clientes.userId', '=', 'enderecos.userId');
             return res.json(results);
         } catch (error) {
+            console.log(error)
             next(error);
         }
 
