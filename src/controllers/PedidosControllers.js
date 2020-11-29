@@ -63,7 +63,7 @@ module.exports = {
                 index++
             }
 
-            await pagarme.client.connect({ api_key: 'ak_test_y7jk294ynbzf93' })
+            await pagarme.client.connect({ api_key: 'ak_test_82qgXOppwHF79yNxfhXHTIty2rMqcE' })
                 .then(client => client.transactions.all())
                 .then(transactions => console.log(transactions))
 
@@ -74,7 +74,7 @@ module.exports = {
                 card_cvv: '123',
             }
 
-            pagarme.client.connect({ encryption_key: 'ek_test_sqlDbxvRyYcBPK8t2Dqo5APBdjmVSe' })
+            pagarme.client.connect({ encryption_key: 'ak_test_82qgXOppwHF79yNxfhXHTIty2rMqcE' })
                 .then(client => client.security.encrypt(card))
                 .then(card_hash => console.log(card_hash))
 
