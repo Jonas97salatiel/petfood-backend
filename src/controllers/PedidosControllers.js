@@ -63,15 +63,21 @@ module.exports = {
                 index++
             }
 
-            await pagarme.client.connect({ api_key: 'ak_test_82qgXOppwHF79yNxfhXHTIty2rMqcE' })
-                .then(client => client.transactions.create({
-                    amount: 1000,
-                    card_number: '4111111111111111',
-                    card_holder_name: 'abc',
-                    card_expiration_date: '1225',
-                    card_cvv: '123',
-                }))
-            
+            await pagarme.client.connect({ api_key: 'ak_test_y7jk294ynbzf93' })
+                .then(client => client.transactions.all())
+                .then(transactions => console.log(transactions))
+
+            const card = {
+                card_number: '4111111111111111',
+                card_holder_name: 'abc',
+                card_expiration_date: '1225',
+                card_cvv: '123',
+            }
+
+            pagarme.client.connect({ encryption_key: 'ek_test_y7jk294ynbzf93' })
+                .then(client => client.security.encrypt(card))
+                .then(card_hash => console.log(card_hash))
+
 
             return res.status(200).json({ success: 'Pedido cadastrado com sucesso!' })
 
