@@ -74,7 +74,7 @@ module.exports = {
                 card_cvv: '123',
             }
 
-            pagarme.client.connect({ encryption_key: 'ek_test_y7jk294ynbzf93' })
+            pagarme.client.connect({ encryption_key: 'ek_test_sqlDbxvRyYcBPK8t2Dqo5APBdjmVSe' })
                 .then(client => client.security.encrypt(card))
                 .then(card_hash => console.log(card_hash))
 
