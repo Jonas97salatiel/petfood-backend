@@ -21,7 +21,7 @@ module.exports = {
         try {
             const results = await knex('clientes')
             .join('enderecos', 'clientes.userId', '=', 'enderecos.userId')
-            .where( 'userId', userId );
+            // .where( 'userId', userId );
             return res.json(results);
         } catch (error) {
             console.log(error)
