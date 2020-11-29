@@ -63,75 +63,89 @@ module.exports = {
                 index++
             }
 
-            const client = await pagarme.client.connect({ api_key: 'ak_test_82qgXOppwHF79yNxfhXHTIty2rMqcE' })
+            await pagarme.client.connect({ api_key: 'ak_test_82qgXOppwHF79yNxfhXHTIty2rMqcE' })
                 .then(client => client.transactions.all())
                 .then(transactions => console.log(transactions))
 
-            const pagarmeTransaction = await client.transactions.create({
-                "amount": "21000",
-                    "card_number": "4111111111111111",
-                    "card_cvv": "123",
-                    "card_expiration_date": "1225",
-                    "card_holder_name": "abc",
-                    "customer": {
-                      "external_id": "#3311",
-                      "name": "abc",
-                      "type": "individual",
-                      "country": "br",
-                      "email": "mopheus@nabucodonozor.com",
-                      "documents": [
+            const card = {
+                card_number: '4111111111111111',
+                card_holder_name: 'abc',
+                card_expiration_date: '1225',
+                card_cvv: '123',
+            }
+
+            pagarme.client.connect({ encryption_key: 'ak_test_82qgXOppwHF79yNxfhXHTIty2rMqcE' })
+                .then(client => client.security.encrypt(card))
+                .then(card_hash => console.log(card_hash))
+
+            const params = {
+                    amount: "21000",
+                    payment_method: "credit_card",
+                    card_number: "4111111111111111",
+                    card_cvv: "123",
+                    card_expiration_date: "1225",
+                    card_holder_name: "abc",
+                    customer: {
+                      external_id: "#3311",
+                      name: "abc",
+                      type: "individual",
+                      country: "br",
+                      email: "mopheus@nabucodonozor.com",
+                      documents: [
                         {
-                          "type": "cpf",
-                          "number": "00000000000"
+                          type: "cpf",
+                          number: "00000000000"
                         }
                       ],
-                      "phone_numbers": ["+5511999998888", "+5511888889999"],
-                      "birthday": "1965-01-01"
+                      phone_numbers: ["+5511999998888", "+5511888889999"],
+                      birthday: "1965-01-01"
                     },
-                    "billing": {
-                      "name": "Trinity Moss",
-                      "address": {
-                        "country": "br",
-                        "state": "sp",
-                        "city": "Cotia",
-                        "neighborhood": "Rio Cotia",
-                        "street": "Rua Matrix",
-                        "street_number": "9999",
-                        "zipcode": "06714360"
+                    billing: {
+                      name: "Trinity Moss",
+                      address: {
+                        country: "br",
+                        state: "sp",
+                        city: "Cotia",
+                        neighborhood: "Rio Cotia",
+                        street: "Rua Matrix",
+                        street_number: "9999",
+                        zipcode: "06714360"
                       }
                     },
-                    "shipping": {
-                      "name": "Neo Reeves",
-                      "fee": "1000",
-                      "delivery_date": "2000-12-21",
-                      "expedited": true,
-                      "address": {
-                        "country": "br",
-                        "state": "sp",
-                        "city": "Cotia",
-                        "neighborhood": "Rio Cotia",
-                        "street": "Rua Matrix",
-                        "street_number": "9999",
-                        "zipcode": "06714360"
+                    shipping: {
+                      name: "Neo Reeves",
+                      fee: "1000",
+                      delivery_date: "2000-12-21",
+                      expedited: true,
+                      address: {
+                        country: "br",
+                        state: "sp",
+                        city: "Cotia",
+                        neighborhood: "Rio Cotia",
+                        street: "Rua Matrix",
+                        street_number: "9999",
+                        zipcode: "06714360"
                       }
                     },
-                    "items": [
+                    items: [
                       {
-                        "id": "r123",
-                        "title": "Red pill",
-                        "unit_price": "10000",
-                        "quantity": "1",
-                        "tangible": true
+                        id: "r123",
+                        title: "Red pill",
+                        unit_price: "10000",
+                        quantity: "1",
+                        tangible: true
                       },
                       {
-                        "id": "b123",
-                        "title": "Blue pill",
-                        "unit_price": "10000",
-                        "quantity": "1",
-                        "tangible": true
+                        id: "b123",
+                        title: "Blue pill",
+                        unit_price: "10000",
+                        quantity: "1",
+                        tangible: true
                       }
                     ]
-            });
+                }
+
+            const pagarmeTransaction = await pagarme.client.transactions.create(params);
 
             console.log(pagarmeTransaction);
 
