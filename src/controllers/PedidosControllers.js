@@ -115,7 +115,7 @@ module.exports = {
                         "neighborhood": bairro,
                         "street": rua,
                         "street_number": numeroRua,
-                        "zipcode": cep
+                        "zipcode": '72020550'
                     }
                 },
                 "shipping": {
