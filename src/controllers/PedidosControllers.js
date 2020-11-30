@@ -122,7 +122,7 @@ module.exports = {
                     },
                     "shipping": {
                         "name": nomeParceiro,
-                        "fee": 0000,
+                        "fee": 0010,
                         "delivery_date": currentDate,
                         "expedited": true,
                         "address": {
