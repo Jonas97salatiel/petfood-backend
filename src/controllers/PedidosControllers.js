@@ -22,6 +22,29 @@ module.exports = {
 
         } catch (error) {
             console.log(error);
+            next(error);
+        }
+    },
+
+    async indexCliente(req, res, next) {
+
+        const idCliente = req.params.idCliente;
+
+        try {
+
+            const results = await knex('pedidos')
+            .join('parceiro', 'pedidos.idParceiro', '=', 'parceiro.idParceiro')
+            .where({ idCliente });
+
+            if (results.length === 0) {
+                return res.status(200).json({});
+            } else {
+                return res.json(results);
+            }
+
+        } catch (error) {
+            console.log(error);
+            next(error);
         }
     },
 
