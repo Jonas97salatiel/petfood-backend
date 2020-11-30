@@ -76,12 +76,7 @@ module.exports = {
             index++
         }
 
-
         let listaProdutos = req.body.ListaProdutos;
-
-        console.log(listaProdutos);
-
-        console.log(items);
 
         try {
 
@@ -136,44 +131,43 @@ module.exports = {
                 "items": items
             }
 
-            console.log(datePagamentos);
-
-            await pagarme.client.connect({ api_key: 'ak_test_82qgXOppwHF79yNxfhXHTIty2rMqcE' })
+         const response = await pagarme.client.connect({ api_key: 'ak_test_82qgXOppwHF79yNxfhXHTIty2rMqcE' })
                 .then(client => client.transactions.create(datePagamentos))
-                .then(response => console.log(response.errors[0]),console.log('teste') )
                 .catch(function(error){
                     console.log(error.response);
-                    console.log('teste1')
+                   
+                })
+        
+        console.log(response);
+        
+
+            await knex('pedidos').insert({
+
+                valorPedido: valorPedido,
+                status: status,
+                numeroTransacao: numeroTransacao,
+                idCliente: idCliente,
+                idFormaPagamento: idFormaPagamento,
+                idCuponsDesconto: idCuponsDesconto,
+                idParceiro: idParceiro
+
+            });
+
+            const idPedidos = await knex('pedidos').where({ numeroTransacao: numeroTransacao }).select('idPedidos');
+            console.log(idPedidos);
+
+            for (let index = 0; index < listaProdutos.length;) {
+
+                const { idProduto, qtd } = listaProdutos[index];
+
+                await knex('pedidos_produtos').insert({
+                    quantidade: qtd,
+                    idPedidos: idPedidos[0].idPedidos,
+                    idProduto: idProduto
                 })
 
-
-            // await knex('pedidos').insert({
-
-            //     valorPedido: valorPedido,
-            //     status: status,
-            //     numeroTransacao: numeroTransacao,
-            //     idCliente: idCliente,
-            //     idFormaPagamento: idFormaPagamento,
-            //     idCuponsDesconto: idCuponsDesconto,
-            //     idParceiro: idParceiro
-
-            // });
-
-            // const idPedidos = await knex('pedidos').where({ numeroTransacao: numeroTransacao }).select('idPedidos');
-            // console.log(idPedidos);
-
-            // for (let index = 0; index < listaProdutos.length;) {
-
-            //     const { idProduto, qtd } = listaProdutos[index];
-
-            //     await knex('pedidos_produtos').insert({
-            //         quantidade: qtd,
-            //         idPedidos: idPedidos[0].idPedidos,
-            //         idProduto: idProduto
-            //     })
-
-            //     index++
-            // }
+                index++
+            }
 
             return res.status(200).json({ success: 'Pedido cadastrado com sucesso!' })
 
