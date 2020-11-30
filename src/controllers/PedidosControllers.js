@@ -120,7 +120,7 @@ module.exports = {
                 },
                 "shipping": {
                     "name": nomeParceiro,
-                    "fee": 0010,
+                    "fee": 0000,
                     "delivery_date": currentDate,
                     "expedited": true,
                     "address": {
@@ -140,7 +140,7 @@ module.exports = {
 
             await pagarme.client.connect({ api_key: 'ak_test_82qgXOppwHF79yNxfhXHTIty2rMqcE' })
                 .then(client => client.transactions.create(datePagamentos))
-                .then(transaction => console.log(transaction))
+                .then(transaction => console.log(transaction.error))
                 .catch(function(error){
                     console.log(error);
                 })
