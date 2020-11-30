@@ -7,7 +7,10 @@ module.exports = {
 
         try {
             const results = await knex('produtos')
-                .join('parceiro', 'produtos.idParceiro', '=', 'parceiro.idParceiro') ;
+                .join('parceiro', 'produtos.idParceiro', '=', 'parceiro.idParceiro')
+                .join('marca', 'produtos.idMarca', '=', 'marca.idMarca')
+                .join('especie', 'produtos.idEspecie', '=', 'especie.idEspecie')
+                .join('categorias', 'produtos.idCategoria', '=', 'categorias.idCategoria' ) ;
            
                 return res.json(results)
 
