@@ -121,7 +121,7 @@ module.exports = {
                             "number": cpf
                         }
                     ],
-                    "phone_numbers": ["+055" + telefone],
+                    "phone_numbers": ["+0556132061700"],
                     "birthday": "2000-01-01"
                 },
                 "billing": {
