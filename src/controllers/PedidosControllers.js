@@ -180,7 +180,7 @@ module.exports = {
 
             });
 
-            const idPedidos = await knex('pedidos').where({ numeroTransacao: numeroTransacao }).select('idPedidos');
+            const idPedidos = await knex('pedidos').where({ numeroTransacao: response.nsu }).select('idPedidos');
             console.log(idPedidos);
 
             for (let index = 0; index < listaProdutos.length;) {
