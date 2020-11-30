@@ -130,7 +130,7 @@ module.exports = {
                         "neighborhood": bairroParceiro,
                         "street": ruaParceiro,
                         "street_number": numeroRuaParceiro,
-                        "zipcode": cepParceiro
+                        "zipcode": '72020550'
                     }
                 },
                 "items": items
