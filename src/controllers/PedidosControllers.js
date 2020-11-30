@@ -79,6 +79,8 @@ module.exports = {
 
         }
 
+        trasnformaArray();
+
        
 
 
