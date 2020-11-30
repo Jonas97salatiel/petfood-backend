@@ -103,7 +103,7 @@ module.exports = {
                             "number": cpf
                         }
                     ],
-                    "phone_numbers": [telefone],
+                    "phone_numbers": ["+055" + telefone],
                     "birthday": "2000-01-01"
                 },
                 "billing": {
