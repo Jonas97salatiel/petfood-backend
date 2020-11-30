@@ -31,6 +31,7 @@ module.exports = {
 
             valorPedidoCents,
             varCartao,
+            cvv,
             validadeExprt,
             nometitular,
             idCliente,
@@ -88,9 +89,9 @@ module.exports = {
 
            await pagarme.client.connect({ api_key: 'ak_test_82qgXOppwHF79yNxfhXHTIty2rMqcE' })
                 .then(client => client.transactions.create({
-                    "amount": 21000,
-                    "card_number": valorPedidoCents,
-                    "card_cvv": varCartao,
+                    "amount": valorPedidoCents,
+                    "card_number": varCartao,
+                    "card_cvv": cvv,
                     "card_expiration_date": validadeExprt,
                     "card_holder_name": nometitular,
                     "customer": {
@@ -135,22 +136,7 @@ module.exports = {
                             "zipcode": cepParceiro
                         }
                     },
-                    "items": [
-                        {
-                          "id": "r123",
-                          "title": "Red pill",
-                          "unit_price": 10000,
-                          "quantity": 1,
-                          "tangible": true
-                        },
-                        {
-                          "id": "b123",
-                          "title": "Blue pill",
-                          "unit_price": 10000,
-                          "quantity": 1,
-                          "tangible": true
-                        }
-                      ]
+                    "items": items
                 }))
                 .then(transaction => console.log(transaction))
 
