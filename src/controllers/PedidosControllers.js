@@ -63,8 +63,6 @@ module.exports = {
 
         var items = [];
 
-        await function trasnformaArray(){
-
             for (let index = 0; index < ListaProdutos.length; ) {
             
                 var id = ListaProdutos[index].idProduto;
@@ -76,13 +74,6 @@ module.exports = {
                 items.push({id, title, unit_price, quantity, tangible})
                 index++
             }
-
-        }
-
-        trasnformaArray();
-
-       
-
 
 
         let listaProdutos = req.body.ListaProdutos;
