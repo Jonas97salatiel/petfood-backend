@@ -85,6 +85,8 @@ module.exports = {
 
         } = req.body;
 
+        const idCLienteTrue = knex('clientes').where('userId', idCliente).select('idCliente');
+
         var valorPedido = valorPedidoCents / 100;
 
         var items = [];
@@ -171,7 +173,7 @@ module.exports = {
                 valorPedido: valorPedido,
                 status: status,
                 numeroTransacao: response.nsu,
-                idCliente: idCliente,
+                idCliente: idCLienteTrue,
                 idFormaPagamento: idFormaPagamento,
                 idCuponsDesconto: idCuponsDesconto,
                 idParceiro: idParceiro
