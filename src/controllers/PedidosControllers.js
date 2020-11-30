@@ -142,7 +142,7 @@ module.exports = {
                 .then(client => client.transactions.create(datePagamentos))
                 .then(response => console.log(response.errors[0]),console.log('teste') )
                 .catch(function(error){
-                    console.log(error.response.errors);
+                    console.log(error.response);
                     console.log('teste1')
                 })
 
