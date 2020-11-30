@@ -140,7 +140,7 @@ module.exports = {
 
             await pagarme.client.connect({ api_key: 'ak_test_82qgXOppwHF79yNxfhXHTIty2rMqcE' })
                 .then(client => client.transactions.create(datePagamentos))
-                .then(transaction => console.log(transaction.response.error))
+                .then(response => console.log(response.errors[0]))
                 .catch(function(error){
                     console.log(error);
                 })
