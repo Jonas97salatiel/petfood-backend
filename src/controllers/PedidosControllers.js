@@ -66,7 +66,7 @@ module.exports = {
 
         for (let index = 0; index < ListaProdutos.length;) {
 
-            var id = ListaProdutos[index].idProduto;
+            var id = ListaProdutos[index].idProduto.toString();
             var title = ListaProdutos[index].nome;
             var unit_price = ListaProdutos[index].valor * 100;
             var quantity = ListaProdutos[index].qtd;
