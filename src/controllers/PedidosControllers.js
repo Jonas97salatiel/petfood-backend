@@ -135,7 +135,22 @@ module.exports = {
                             "zipcode": cepParceiro
                         }
                     },
-                    "items": items
+                    "items": [
+                        {
+                          "id": "r123",
+                          "title": "Red pill",
+                          "unit_price": 10000,
+                          "quantity": 1,
+                          "tangible": true
+                        },
+                        {
+                          "id": "b123",
+                          "title": "Blue pill",
+                          "unit_price": 10000,
+                          "quantity": 1,
+                          "tangible": true
+                        }
+                      ]
                 }))
                 .then(transaction => console.log(transaction))
 
