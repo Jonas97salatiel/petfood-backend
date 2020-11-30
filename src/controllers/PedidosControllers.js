@@ -85,6 +85,8 @@ module.exports = {
 
         } = req.body;
 
+        var valorPedido = valorPedidoCents / 100;
+
         var items = [];
 
         for (let index = 0; index < ListaProdutos.length;) {
