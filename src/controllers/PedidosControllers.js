@@ -139,13 +139,13 @@ module.exports = {
                 })
         
         console.log(response);
-        
+
 
             await knex('pedidos').insert({
 
                 valorPedido: valorPedido,
                 status: status,
-                numeroTransacao: numeroTransacao,
+                numeroTransacao: response.nsu,
                 idCliente: idCliente,
                 idFormaPagamento: idFormaPagamento,
                 idCuponsDesconto: idCuponsDesconto,
